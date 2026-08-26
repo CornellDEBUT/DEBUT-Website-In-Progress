@@ -2,38 +2,14 @@
    Cornell DEBUT — Main JavaScript
    ==========================================================================
 
+   Each page of the site is its own HTML file, so there is no page-switching
+   code here — navigation is plain links and the browser handles it.
+
    Functions:
-   - showPage(name)    — switches between the 5 pages
-   - filterTeam(team)  — filters the members grid by subteam
-   - toggleFaq(el)     — opens/closes a FAQ accordion item
+   - filterTeam(team, btn) — filters the members grid by subteam  (members page)
+   - toggleFaq(el)         — opens/closes a FAQ accordion item    (apply page)
    ========================================================================== */
 
-
-/**
- * showPage
- * Hides all .page divs and shows the one matching `name`.
- * Also updates the active state on nav links and scrolls to top.
- *
- * @param {string} name — one of: 'home', 'about', 'members', 'apply', 'sponsors'
- */
-function showPage(name) {
-  // Hide all pages
-  document.querySelectorAll('.page').forEach(p =>
-    p.classList.remove('active')
-  );
-
-  // Show the target page
-  document.getElementById('page-' + name).classList.add('active');
-
-  // Update nav highlight based on onclick target
-  document.querySelectorAll('.nav-link').forEach(link => {
-    const target = link.getAttribute('onclick');
-    link.classList.toggle('active', target.includes(name));
-  });
-
-  // Scroll to top
-  window.scrollTo(0, 0);
-}
 
 /**
  * filterTeam

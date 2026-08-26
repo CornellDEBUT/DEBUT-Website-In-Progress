@@ -10,16 +10,51 @@ Live site: [cornelldebut.org](https://cornelldebut.org)
 
 ```
 debut-website/
-├── index.html              # Main HTML file — all 5 pages live here
-├── css/
-│   └── styles.css          # All styles, organized by section
-├── js/
-│   └── main.js             # Page navigation, member filter, FAQ accordion
-├── images/
-│   ├── members/            # Headshot photos (JPG/PNG)
-│   └── sponsors/           # Sponsor logo images (PNG/SVG)
+├── index.html                  # Home page          →  /
+├── about/index.html            # About page         →  /about
+├── members/index.html          # Members page       →  /members
+├── past-projects/index.html    # Past projects      →  /past-projects
+├── apply/index.html            # Apply page         →  /apply
+├── sponsors/index.html         # Sponsors page      →  /sponsors
+├── styles.css                  # All styles, organized by section
+├── main.js                     # Member filter, FAQ accordion
+├── static/
+│   ├── DEBUT_HEADSHOTS/        # Member headshots (JPG/PNG)
+│   ├── DEBUT_DEVICES/          # Past project device photos
+│   ├── DEBUT_B_ROLL/           # Team / lab photos
+│   ├── DEBUT_WINNER/           # Competition win photos
+│   └── DEBUT_LOGOS/            # Logos
 └── README.md
 ```
+
+**Each page is its own HTML file.** A visitor only downloads the page they
+asked for, so opening the home page no longer pulls down all 43 headshots.
+The URL changes as you navigate, so pages can be linked to, bookmarked, and
+found by search engines.
+
+### Editing rules to know
+
+1. **All paths start with `/`** — `/styles.css`, `/static/DEBUT_HEADSHOTS/x.jpg`,
+   `/about/`. Never write `static/...` or `../static/...`; the leading slash is
+   what makes the same markup work from every folder.
+2. **The `<nav>` and `<footer>` blocks are identical in all six files.** If you
+   change one, copy it into the other five. Both are marked with a comment
+   banner so they are easy to find.
+3. **Each page sets `<body data-page="...">`** — that is what highlights the
+   correct nav tab. Don't remove it.
+4. **New images should carry `loading="lazy"`** so they only download once the
+   visitor scrolls near them.
+
+### Previewing the site locally
+
+Because paths start with `/`, double-clicking an HTML file will not work. Run a
+local server from the project folder instead:
+
+```bash
+python -m http.server 8137
+```
+
+Then open <http://localhost:8137>.
 
 ---
 
@@ -39,15 +74,22 @@ debut-website/
 
 ### Update member photos or names
 
-1. Add the new headshot to `images/members/` — keep filenames clean (e.g. `Firstname_Lastname.jpg`)
-2. Open `index.html` and find the Members page section (search for `MEMBERS PAGE`)
-3. Find the correct subteam block (e.g. `data-team="1a"`)
-4. Copy an existing `.member-card` block and update the `src`, `alt`, and name text
-5. To mark someone as a subteam lead, add `<span class="member-lead-tag">Lead</span>` after their name
+1. Add the new headshot to `static/DEBUT_HEADSHOTS/` — keep filenames clean (e.g. `Firstname_Lastname.jpg`)
+2. Open `members/index.html` and find the `teams` array in the `<script>` block
+3. Find the correct subteam object (e.g. `id: "1a"`) and add an entry to its `members` list:
+
+```js
+{ name: "First Last", img: "/static/DEBUT_HEADSHOTS/First_Last.JPG" }
+```
+
+4. To mark someone as a subteam lead, add `lead: true` to their entry
+5. For a member with no photo, use `img: null` — their initial is shown instead
+
+The cards are generated from this array, so you never edit HTML for a roster change.
 
 ### Toggle application status open/closed
 
-In `index.html`, find the Apply page section and change the badge class:
+In `apply/index.html`, change the badge class:
 
 ```html
 <!-- Applications CLOSED -->
@@ -63,26 +105,45 @@ Then update the application links — replace the `<span class="apply-pos-link">
 <a href="https://your-form-link.com" target="_blank" class="apply-pos-link">Apply Now →</a>
 ```
 
+### Add a whole new page
+
+1. Copy an existing page folder (e.g. `about/`) to a new folder, e.g. `outreach/`
+2. Change `<title>`, the `description` meta tag, the `canonical` link, and
+   `<body data-page="outreach">`
+3. Add the nav link to **all six** existing pages plus the new one:
+   ```html
+   <a class="nav-link" data-nav="outreach" href="/outreach/">Outreach</a>
+   ```
+4. In `styles.css`, add `outreach` to the two current-page highlight selector
+   lists (search for `data-page`)
+
 ### Add a new subteam
 
-1. In `index.html`, add a new filter button in the `.filter-row`:
+1. In `members/index.html`, add a new filter button in the `.filter-row`:
    ```html
    <button class="filter-btn" onclick="filterTeam('newteam', this)">New Team</button>
    ```
-2. Add a new `.subteam-section` block with `data-team="newteam"` in the members grid area
+2. Add a matching object to the `teams` array in the same file:
+   ```js
+   { id: "newteam", label: "Subteam", title: "New Team", members: [ ... ] }
+   ```
 
 ### Update alumni placements ticker
 
-In `index.html`, find the `<!-- Alumni Placement Ticker -->` comment. Edit the `.ticker-item` blocks in **both** the first set and the duplicate set (the duplicate is required to keep the scroll loop seamless).
+In `index.html` (the home page), find the `<!-- Alumni Placement Ticker -->` comment. Edit the `.ticker-item` blocks in **both** the first set and the duplicate set (the duplicate is required to keep the scroll loop seamless).
 
 ### Add a sponsor logo
 
-1. Save the logo image to `images/sponsors/`
-2. On the Sponsors page, add an `<img>` tag in the appropriate tier section
+1. Save the logo image to `static/` (e.g. `static/DEBUT_SPONSORS/`)
+2. In `sponsors/index.html`, add an `<img>` tag in the appropriate tier section:
+   ```html
+   <img src="/static/DEBUT_SPONSORS/logo.png" alt="Sponsor name" loading="lazy">
+   ```
 
 ### Update sponsorship packet link
 
-Search for `Cornell-2023-2024-Sponsorship-Packet.pdf` in `index.html` and replace with the new file URL.
+Add the new PDF to `static/`, then in `sponsors/index.html` update the packet
+link's `href` to point at it (e.g. `/static/Sponsor_Packet_26.pdf`).
 
 ---
 
@@ -108,16 +169,18 @@ Search for `Cornell-2023-2024-Sponsorship-Packet.pdf` in `index.html` and replac
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `--red` | `#b91c1c` | Brand accent, leads, active states |
-| `--bg` | `#0c0c0c` | Page background |
-| `--bg2` | `#111111` | Card / inset backgrounds |
-| `--bg3` | `#181818` | Featured card backgrounds |
-| `--text` | `#f0ede8` | Primary text |
-| `--text-dim` | `rgba(240,237,232,0.45)` | Body / secondary text |
+| `--red` | `#b91c1c` | Brand accent, leads, active nav tab |
+| `--bg` | `#ffffff` | Page background |
+| `--bg2` | `#f8f8f8` | Card / inset backgrounds |
+| `--bg3` | `#f2f2f2` | Featured card backgrounds |
+| `--text` | `#0c0c0c` | Primary text |
+| `--text-mid` | `rgba(12,12,12,0.70)` | Secondary text |
+| `--text-dim` | `rgba(12,12,12,0.45)` | Body / muted text |
+| `--border` | `rgba(0,0,0,0.08)` | Hairline rules, card edges |
 | `--serif` | EB Garamond | Display headings |
 | `--sans` | DM Sans | Body, nav, labels |
 
-All CSS variables are defined at the top of `css/styles.css` in the `:root` block.
+All CSS variables are defined at the top of `styles.css` in the `:root` block.
 
 ---
 

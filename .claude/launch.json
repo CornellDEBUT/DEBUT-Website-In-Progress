@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "debut-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-u", ".claude/serve.py"],
+      "port": 8137,
+      "autoPort": true
+    }
+  ]
+}

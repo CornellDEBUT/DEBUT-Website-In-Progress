@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cornell DEBUT — Biomedical Engineering Project Team</title>
+  <meta name="description" content="Cornell DEBUT is an undergraduate biomedical engineering project team that develops innovative medical devices from concept to prototype and competes in VentureWell's national DEBUT competition.">
+  <link rel="canonical" href="https://cornelldebut.org/">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,33 +13,30 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body data-page="home">
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     NAVIGATION
+     NAVIGATION — identical on all 6 pages.
+     If you change it, copy this whole block into every page file.
+     The current tab highlights itself from <body data-page="..."> — no JS.
      ══════════════════════════════════════════════════════════════════════ -->
 <nav>
-  <div class="nav-brand" onclick="showPage('home')">
-    <img src="static/DEBUT_LOGOS/DEBUT_MAIN_LOGO.png" alt="DEBUT Logo" class="nav-logo">
-  </div>
+  <a href="/" class="nav-brand">
+    <img src="/static/DEBUT_LOGOS/DEBUT_MAIN_LOGO.png" alt="DEBUT Logo" class="nav-logo">
+  </a>
   <div class="nav-links">
-    <button class="nav-link active" onclick="showPage('home')">Home</button>
-    <button class="nav-link" onclick="showPage('about')">About</button>
-    <button class="nav-link" onclick="showPage('members')">Members</button>
-    <button class="nav-link" onclick="showPage('rnd-devices')">Past Projects</button>
-    <button class="nav-link" onclick="showPage('apply')">Apply</button>
-    <button class="nav-link" onclick="showPage('sponsors')">Sponsors</button>
+    <a class="nav-link" data-nav="home"          href="/">Home</a>
+    <a class="nav-link" data-nav="about"         href="/about/">About</a>
+    <a class="nav-link" data-nav="members"       href="/members/">Members</a>
+    <a class="nav-link" data-nav="past-projects" href="/past-projects/">Past Projects</a>
+    <a class="nav-link" data-nav="apply"         href="/apply/">Apply</a>
+    <a class="nav-link" data-nav="sponsors"      href="/sponsors/">Sponsors</a>
   </div>
 </nav>
 
-
-<!-- ══════════════════════════════════════════════════════════════════════
-     HOME PAGE
-     ══════════════════════════════════════════════════════════════════════ -->
-<div id="page-home" class="page active">
-
+<div class="page">
   <!-- Hero -->
   <section class="hero">
     <div class="hero-bg"></div>
@@ -48,13 +47,13 @@
         <h1 class="hero-title">Engineering <em>solutions</em><br>that matter.</h1>
         <p class="hero-desc">Cornell DEBUT is an undergraduate project team that develops innovative biomedical devices — from initial concept through prototype — and competes in VentureWell's national DEBUT competition.</p>
         <div class="hero-cta">
-          <button class="btn-primary" onclick="showPage('apply')">Apply Now</button>
-          <button class="btn-outline" onclick="showPage('about')">Learn More</button>
+          <a href="/apply/" class="btn-primary">Apply Now</a>
+          <a href="/about/" class="btn-outline">Learn More</a>
         </div>
       </div>
       <div class="hero-photo-panel">
-        <img
-          src="static/DEBUT_MAIN_PAGE/DEBUT_Full_Team_Photo.JPG"
+        <img fetchpriority="high" decoding="async"
+          src="/static/DEBUT_MAIN_PAGE/DEBUT_Full_Team_Photo.JPG"
           alt="Cornell DEBUT Full Team Photo"
           class="hero-team-photo"
         >
@@ -87,19 +86,19 @@
     <div class="carousel-container">
       <div class="carousel-track">
         <!-- Set 1 -->
-        <div class="carousel-item"><img src="static/DEBUT_WINNER/Steady_Win.JPEG" alt="SteadyStride Win"></div>
-        <div class="carousel-item"><img src="static/DEBUT_WINNER/HemBrace_Win.png" alt="HemBrace Win"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_1.JPG" alt="Team Photo"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_6.JPG" alt="B-roll 2"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_7.JPG" alt="B-roll 3"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_8.JPG" alt="B-roll 4"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_WINNER/Steady_Win.JPEG" alt="SteadyStride Win"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_WINNER/HemBrace_Win.png" alt="HemBrace Win"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_1.JPG" alt="Team Photo"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_6.JPG" alt="B-roll 2"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_7.JPG" alt="B-roll 3"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_8.JPG" alt="B-roll 4"></div>
         <!-- Set 2 — duplicate for seamless loop -->
-        <div class="carousel-item"><img src="static/DEBUT_WINNER/Steady_Win.JPEG" alt="SteadyStride Win"></div>
-        <div class="carousel-item"><img src="static/DEBUT_WINNER/HemBrace_Win.png" alt="HemBrace Win"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_1.JPG" alt="Team Photo"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_6.JPG" alt="B-roll 2"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_7.JPG" alt="B-roll 3"></div>
-        <div class="carousel-item"><img src="static/DEBUT_B_ROLL/B_Roll_8.JPG" alt="B-roll 4"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_WINNER/Steady_Win.JPEG" alt="SteadyStride Win"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_WINNER/HemBrace_Win.png" alt="HemBrace Win"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_1.JPG" alt="Team Photo"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_6.JPG" alt="B-roll 2"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_7.JPG" alt="B-roll 3"></div>
+        <div class="carousel-item"><img loading="lazy" decoding="async" src="/static/DEBUT_B_ROLL/B_Roll_8.JPG" alt="B-roll 4"></div>
       </div>
     </div>
   </div>
@@ -137,693 +136,27 @@
       </div>
 
       <!-- Floating photos -->
-      <div class="floating-photo floating-photo-1" style="background-image: url('static/DEBUT_B_ROLL/B_Roll_1.JPG');"></div>
-      <div class="floating-photo floating-photo-2" style="background-image: url('static/DEBUT_B_ROLL/B_Roll_4.JPG');"></div>
-      <div class="floating-photo floating-photo-3" style="background-image: url('static/DEBUT_B_ROLL/B_Roll_3.JPG');"></div>
+      <div class="floating-photo floating-photo-1" style="background-image: url('/static/DEBUT_B_ROLL/B_Roll_1.JPG');"></div>
+      <div class="floating-photo floating-photo-2" style="background-image: url('/static/DEBUT_B_ROLL/B_Roll_4.JPG');"></div>
+      <div class="floating-photo floating-photo-3" style="background-image: url('/static/DEBUT_B_ROLL/B_Roll_3.JPG');"></div>
     </div>
   </section>
-
-  <footer>
-    <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
-    <div class="footer-links">
-      <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
-      <span class="footer-link" onclick="showPage('apply')">Apply</span>
-      <a href="https://instagram.com/cornelldebut" target="_blank" class="footer-link">Instagram</a>
-    </div>
-    <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
-  </footer>
-
 </div>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     ABOUT PAGE
+     FOOTER — identical on all 6 pages. Copy to every file if changed.
      ══════════════════════════════════════════════════════════════════════ -->
-<div id="page-about" class="page">
-
-  <!-- ── HERO ─────────────────────────────────────────────────── -->
-  <div class="about-hero">
-    <div class="about-hero-inner">
-      <div class="page-eyebrow">About Us</div>
-      <h1 class="page-title">Who We Are.</h1>
-      <p class="page-subtitle">
-        We develop innovative biomedical technologies driven by real‑world needs, leveraging the diverse expertise of undergraduate engineers across disciplines.
-      </p>
-    </div>
+<footer>
+  <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
+  <div class="footer-links">
+    <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
+    <a href="/apply/" class="footer-link">Apply</a>
+    <a href="https://instagram.com/cornelldebut" target="_blank" rel="noopener" class="footer-link">Instagram</a>
   </div>
+  <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
+</footer>
 
-  <!-- ── PHOTO STRIP ───────────────────────────────────────────── -->
-  <div class="about-photo-strip">
-    <div class="about-strip-img about-strip-main">
-      <img src="static/DEBUT_B_ROLL/B_Roll_2.JPG" alt="DEBUT Outreach">
-    </div>
-    <div class="about-strip-img">
-      <img src="static/DEBUT_B_ROLL/Subteam_1.JPG" alt="DEBUT Jump">
-    </div>
-  </div>
-
-  <!-- ── BODY ──────────────────────────────────────────────────── -->
-  <div class="about-body">
-
-    <!-- The Competition -->
-    <div class="about-section">
-      <div class="about-section-grid">
-        <div class="about-section-text">
-          <div class="section-label">The Competition</div>
-          <h2 class="about-section-heading">What is DEBUT?</h2>
-          <p class="about-p">
-            DEBUT — Design by Biomedical Undergraduate Teams — is a national competition that recognizes undergraduate excellence in biomedical design and innovation. Hosted by VentureWell, it challenges students to solve real-world healthcare problems through a complete biomedical product development process.
-          </p>
-          <p class="about-p">
-            Strong submissions demonstrate analytical and design mastery, effective teamwork, and clear technical communication. Projects are judged on problem significance, clinical impact, innovative design, working prototype, market potential, economic feasibility, and patentability.
-          </p>
-          <a href="https://venturewell.org/debut/" target="_blank" class="about-link">Venturewell.org →</a>
-        </div>
-
-        <div class="about-section-aside">
-          <div class="about-stat-card">
-            <div class="about-stat-num">20+</div>
-            <div class="about-stat-label">Universities competing annually</div>
-          </div>
-          <div class="about-stat-card">
-            <div class="about-stat-num">$20k</div>
-            <div class="about-stat-label">Top prize awarded by VentureWell</div>
-          </div>
-          <div class="about-stat-card">
-            <div class="about-stat-num">7</div>
-            <div class="about-stat-label">Years Cornell DEBUT has competed</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Analyst Roles -->
-    <div class="about-section about-section--bordered">
-      <div class="section-label">Analyst Roles</div>
-      <h2 class="about-section-heading">What will you work on?</h2>
-
-      <div class="role-cards">
-
-        <!-- R&D -->
-        <div class="role-card">
-          <div class="role-card-label">R&D</div>
-          <div class="role-card-content">
-            <h3>Research & Development Analyst</h3>
-            <p>R&D analysts are the primary drivers of project brainstorming and development. They analyze gaps in biomedical innovation to generate ideas, then work with CAD and other tools before moving into the lab to develop and test prototypes.</p>
-          </div>
-          <div class="role-photo-box">
-            <img src="static/DEBUT_B_ROLL/R&D_Analyst.JPEG" alt="R&D Team">
-          </div>
-        </div>
-
-        <!-- Business -->
-        <div class="role-card">
-          <div class="role-card-label">Business</div>
-          <div class="role-card-content">
-            <h3>Economic / Business Analyst</h3>
-            <p>Business analysts work alongside R&D to bring each project to life. They conduct patent searches, research regulatory pathways, generate market analyses, determine per‑unit costs, and lead the final competition submission.</p>
-          </div>
-          <div class="role-photo-box">
-            <img src="static/DEBUT_B_ROLL/Econ_Analyst.JPG" alt="Business Team">
-          </div>
-        </div>
-
-        <!-- Operations -->
-        <div class="role-card">
-          <div class="role-card-label">Operations</div>
-          <div class="role-card-content">
-            <h3>Operations Analyst</h3>
-            <p>Ops analysts ensure the efficiency and continued operations of the team. They manage the budget, lead fundraising, negotiate sponsorships, run recruitment, and oversee the website and social media presence.</p>
-          </div>
-          <div class="role-photo-box">
-            <img src="static/DEBUT_B_ROLL/Subteam_2.JPG" alt="Operations Team">
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Team Composition -->
-    <div class="about-section about-section--bordered">
-      <div class="about-composition-grid">
-        <div>
-          <div class="section-label">Team Composition</div>
-          <h2 class="about-section-heading">Our members come from across Cornell.</h2>
-          <p class="about-p about-p--lead">
-            Students from 5 colleges and over 15 majors and minors, all years, from around the world.
-          </p>
-        </div>
-
-        <div class="composition-tags">
-          <div class="composition-tag">Biomedical Engineering</div>
-          <div class="composition-tag">Chemical Engineering</div>
-          <div class="composition-tag">Biological Engineering</div>
-          <div class="composition-tag">Biological Sciences</div>
-          <div class="composition-tag">Computer Science</div>
-          <div class="composition-tag">Mechanical Engineering</div>
-          <div class="composition-tag">Operations Research</div>
-          <div class="composition-tag">Information Science</div>
-          <div class="composition-tag">ILR</div>
-          <div class="composition-tag">Applied Economics</div>
-          <div class="composition-tag">…and more</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Project Cycle Timeline -->
-    <div class="about-section about-section--bordered">
-      <div class="section-label">Project Cycle</div>
-      <h2 class="about-section-heading">Two years from concept to competition.</h2>
-
-      <div class="timeline">
-
-        <div class="timeline-row">
-          <div class="timeline-year">
-            <div class="timeline-marker">01</div>
-            <span>Year One</span>
-          </div>
-          <div class="timeline-content">
-            <h4>Phase I — Research &amp; Design</h4>
-            <p>
-              Teams conduct literature reviews, identify unmet clinical needs, generate and evaluate design concepts, and produce comprehensive design reports. The year concludes with selecting one final concept to advance into Phase II.
-            </p>
-            <div class="phase-steps">
-              <div class="phase-step"><span>Literature Review</span></div>
-              <div class="phase-step"><span>Idea Generation</span></div>
-              <div class="phase-step"><span>Concept Selection</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-row">
-          <div class="timeline-year">
-            <div class="timeline-marker">02</div>
-            <span>Year Two</span>
-          </div>
-          <div class="timeline-content">
-            <h4>Phase II — Prototype &amp; Compete</h4>
-            <p>
-              Teams develop a working prototype, conduct testing and iteration, complete the business case with patent searches and market analysis, then submit the final package to the DEBUT national competition in late spring.
-            </p>
-            <div class="phase-steps">
-              <div class="phase-step"><span>Prototype Development</span></div>
-              <div class="phase-step"><span>Testing &amp; Iteration</span></div>
-              <div class="phase-step"><span>Competition Submission</span></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
-    <div class="footer-links">
-      <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
-      <span class="footer-link" onclick="showPage('apply')">Apply</span>
-      <a href="https://instagram.com/cornelldebut" target="_blank" class="footer-link">Instagram</a>
-    </div>
-    <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
-  </footer>
-
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════════════════
-     MEMBERS PAGE
-     To update members: edit the .subteam-section blocks below.
-     Each member needs a .member-card with:
-       - <img src="static/DEBUT_HEADSHOTS/FILENAME.jpg">
-       - <div class="member-name">First Last</div>
-     Subteam leads get a <span class="member-lead-tag">Lead</span> after their name.
-     ══════════════════════════════════════════════════════════════════════ -->
-<div id="page-members" class="page">
-  <div class="members-hero">
-    <div class="page-eyebrow">Biomedical Engineering Project Team</div>
-    <h1 class="page-title">Our Team.</h1>
-    <p class="page-subtitle">+30 engineers and scientists across six subteams, working on real biomedical devices from concept to competition.</p>
-  </div>
-
-  <!-- Subteam filter buttons — data-team must match the data-team on each .subteam-section -->
-  <div class="filter-row">
-    <button class="filter-btn active" onclick="filterTeam('all', this)">All</button>
-    <button class="filter-btn" onclick="filterTeam('leads', this)">Team Leads</button>
-    <button class="filter-btn" onclick="filterTeam('1a', this)">Phase 1A</button>
-    <button class="filter-btn" onclick="filterTeam('1b', this)">Phase 1B</button>
-    <button class="filter-btn" onclick="filterTeam('2a', this)">Phase 2A</button>
-    <button class="filter-btn" onclick="filterTeam('2b', this)">Phase 2B</button>
-    <button class="filter-btn" onclick="filterTeam('business', this)">Business</button>
-  </div>
-
-  <!-- ─────────────────────────────────────────────
-     TEAM ROSTER (DATA + RENDER SCRIPT)
-───────────────────────────────────────────── -->
-
-<div id="team-container"></div>
-
-<script>
-const teams = [
-  {
-    id: "leads",
-    label: "Leadership",
-    title: "Team Leads",
-    members: [
-      { name: "Sally Scofield", img: "static/DEBUT_HEADSHOTS/Sally_Scofield.JPG", lead: true },
-      { name: "Carol Lyu", img: "static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true }
-    ]
-  },
-  {
-    id: "1a",
-    label: "Subteam",
-    title: "Phase 1A",
-    members: [
-      { name: "Ian Vann", img: "static/DEBUT_HEADSHOTS/Ian_Vann.JPG", lead: true },
-      { name: "Elizabeth Paperno", img: "static/DEBUT_HEADSHOTS/Elizabeth_Paperno.JPG" },
-      { name: "Paige Cobrin", img: "static/DEBUT_HEADSHOTS/Paige_Cobrin.JPG" },
-      { name: "Anna Chen", img: "static/DEBUT_HEADSHOTS/ANNA_CHEN.JPG" },
-      { name: "Justin Cohen", img: "static/DEBUT_HEADSHOTS/JUSTIN_COHEN.JPG" },
-      { name: "Rahul Ramarao", img: "static/DEBUT_HEADSHOTS/Rahul_Ramarao.JPG" },
-      { name: "Katherine Doniger", img: "static/DEBUT_HEADSHOTS/KATHERINE_DONIGER.JPG" },
-      { name: "Russell Tan", img: "static/DEBUT_HEADSHOTS/Russell_Tan.JPG" },
-      { name: "Olivia Jung", img: "static/DEBUT_HEADSHOTS/Olivia_Jung.JPG" },
-      { name: "Arya Samaratunga", img: "static/DEBUT_HEADSHOTS/Arya_Samaratunga.JPG" },
-      { name: "Zachary Wei", img: "static/DEBUT_HEADSHOTS/Zachary_Wei.JPG" }
-    ]
-  },
-  {
-    id: "1b",
-    label: "Subteam",
-    title: "Phase 1B",
-    members: [
-      { name: "Molly Matri", img: "static/DEBUT_HEADSHOTS/Molly_Matri.JPG", lead: true },
-      { name: "Jedric Jizaiah Aniciete", img: "static/DEBUT_HEADSHOTS/Jedric_Jizaiah_Aniciete.JPG" },
-      { name: "Mireille Antaki", img: "static/DEBUT_HEADSHOTS/MireilleAntaki.JPG" },
-      { name: "Cooper Carrozza", img: "static/DEBUT_HEADSHOTS/Cooper_Carrozza.JPG" },
-      { name: "Evan Chang", img: "static/DEBUT_HEADSHOTS/EVAN_CHANG.JPG" },
-      { name: "Tristan Gelinas", img: "static/DEBUT_HEADSHOTS/Tristan_bfsd.JPG" },
-      { name: "Alix Martini" },
-      { name: "Clara Reive", img: "static/DEBUT_HEADSHOTS/Clara.Reive.JPG" },
-      { name: "Rebecca Schwarzberg" }
-    ]
-  },
-  {
-    id: "2a",
-    label: "Subteam",
-    title: "Phase 2A",
-    members: [
-      { name: "Jess Rakoczy", img: "static/DEBUT_HEADSHOTS/Jess_Rakoczy.JPG", lead: true },
-      { name: "Andrew Leibowitz", img: "static/DEBUT_HEADSHOTS/Andrew_Liebowitz.JPG" },
-      { name: "Asher Ciardiello", img: "static/DEBUT_HEADSHOTS/Asher_Ciardiello.JPG" },
-      { name: "Felix Grimm", img: "static/DEBUT_HEADSHOTS/Felix_Grimm.JPG" },
-      { name: "Gloria Zhang", img: "static/DEBUT_HEADSHOTS/Gloria_Zhang.JPG" },
-      { name: "Nana Jiraphanphong", img: "static/DEBUT_HEADSHOTS/Nana_Jiraphanphong .JPG" },
-      { name: "Nathan Choi", img: "static/DEBUT_HEADSHOTS/NATHAN_CHOI.PNG" },
-      { name: "Zayaan Hussain", img: "static/DEBUT_HEADSHOTS/Zayaan_Hussain.JPG" }
-    ]
-  },
-  {
-    id: "2b",
-    label: "Subteam",
-    title: "Phase 2B",
-    members: [
-      { name: "Andrew D'Onofrio", img: "static/DEBUT_HEADSHOTS/Andrew_DOnofrio.jpg", lead: true },
-      { name: "Emma Weiss", img: "static/DEBUT_HEADSHOTS/Emma_Weiss.png" },
-      { name: "Ally Schwartz", img: "static/DEBUT_HEADSHOTS/AllySchwartz.JPG" },
-      { name: "Nitish Bhamidipati", img: "static/DEBUT_HEADSHOTS/Nitish_Bhamidipati.JPG" },
-      { name: "Connie Anagnos", img: "static/DEBUT_HEADSHOTS/Connie_Anagnos.JPG" },
-      { name: "Holbrook Langley", img: "static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG" },
-      { name: "Syon Khatter", img: "static/DEBUT_HEADSHOTS/Syon_Khatter.JPG" },
-      { name: "Bhumika Iroji", img: "static/DEBUT_HEADSHOTS/Bhumika_Iroji.JPG" },
-      { name: "Rawsen Weideman", img: "static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG" },
-      { name: "Nathan Briard", img: "static/DEBUT_HEADSHOTS/Nathan_Briard.JPG" }
-    ]
-  },
-  {
-    id: "business",
-    label: "Subteam",
-    title: "Business",
-    members: [
-      { name: "Gabriel Benavidez", img: "static/DEBUT_HEADSHOTS/Gabriel_Benavidez.JPG", lead: true },
-      { name: "Christine Lim" },
-      { name: "Alexander Yeung", img: "static/DEBUT_HEADSHOTS/Alexander_Yeung.JPG" },
-      { name: "Michelle Park" },
-      { name: "Zea Khoja", img: "static/DEBUT_HEADSHOTS/ZEA_KHOJA.JPG" },
-      { name: "Lena Thai", img: "static/DEBUT_HEADSHOTS/Lena_Thai.JPG" },
-      { name: "Ethan Huang", img: "static/DEBUT_HEADSHOTS/Ethan_Huang.JPG" }
-    ]
-  }
-];
-
-// ─────────────────────────────
-// RENDER FUNCTION
-// ─────────────────────────────
-const container = document.getElementById("team-container");
-
-teams.forEach(team => {
-  const section = document.createElement("div");
-  section.className = "subteam-section";
-  section.dataset.team = team.id;
-
-  section.innerHTML = `
-    <div class="subteam-header">
-      <span class="subteam-section-label">${team.label}</span>
-      <span class="subteam-section-title">${team.title}</span>
-    </div>
-    <div class="members-grid">
-      ${team.members.map(m => `
-        <div class="member-card">
-          ${m.img 
-            ? `<img src="${m.img}" alt="${m.name}">` 
-            : `<div class="member-no-photo">${m.name.charAt(0)}</div>`}
-          <div class="member-name">
-            ${m.name}${m.lead ? ` <span class="member-lead-tag">Lead</span>` : ""}
-          </div>
-        </div>
-      `).join("")}
-    </div>
-  `;
-
-  container.appendChild(section);
-});
-</script>
-
-  <footer>
-    <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
-    <div class="footer-links">
-      <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
-      <span class="footer-link" onclick="showPage('apply')">Apply</span>
-      <a href="https://instagram.com/cornelldebut" target="_blank" class="footer-link">Instagram</a>
-    </div>
-    <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
-  </footer>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════════════════
-     APPLY PAGE
-     To toggle application status: swap .apply-closed-badge ↔ .apply-open-badge
-     To add an application link: replace the <span class="apply-pos-link"> with an <a> tag
-     ══════════════════════════════════════════════════════════════════════ -->
-<div id="page-apply" class="page">
-  <div class="apply-hero">
-    <div class="page-eyebrow">Recruitment</div>
-    <h1 class="page-title">Join DEBUT.</h1>
-    <p class="page-subtitle">We recruit new members every semester. Applications are reviewed on a rolling basis. Reach out to debut@cornell.edu with any questions.</p>
-  </div>
-
-  <div class="apply-body">
-
-    <!-- Left column: positions & links -->
-    <div>
-      <!-- Change class to apply-open-badge when applications are open -->
-      <div class="apply-open-badge">Applications open</div>
-
-      <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:16px;line-height:1.3;">Open Positions</h2>
-      <p style="font-size:14px;color:var(--text-dim);margin-bottom:28px;line-height:1.75;">When applications open, positions are available across R&amp;D (Phase I &amp; II) and Business subteams. Both the DEBUT-specific application and the Cornell General Project Team Application must be submitted together.</p>
-
-      <div class="apply-positions">
-        <div class="apply-position">
-          <div class="apply-pos-title">R&amp;D Analyst — Phase I</div>
-          <div class="apply-pos-desc">Work on brainstorming and early-stage design. Open to all years. CAD experience helpful but not required.</div>
-          <!-- Replace span with <a href="YOUR_LINK"> when open -->
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSft5M9toXigruZcVuzu20_sgfrWnx6oaUaUWI62BbECGli-6w/viewform?usp=header" class="apply-pos-link"> Application link →</a>
-        </div>
-        <div class="apply-position">
-          <div class="apply-pos-title">R&amp;D Analyst — Phase II</div>
-          <div class="apply-pos-desc">Prototype development and lab testing. Sophomores, juniors, and seniors preferred.</div>
-          <!-- Replace span with <a href="YOUR_LINK"> when open -->
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSft5M9toXigruZcVuzu20_sgfrWnx6oaUaUWI62BbECGli-6w/viewform?usp=header" class="apply-pos-link"> Application link →</a>
-        </div>
-        <div class="apply-position">
-          <div class="apply-pos-title">Business / Econ Analyst</div>
-          <div class="apply-pos-desc">Patent research, market analysis, economic feasibility, report writing, and operations. All majors welcome.</div>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSft5M9toXigruZcVuzu20_sgfrWnx6oaUaUWI62BbECGli-6w/viewform?usp=header" class="apply-pos-link"> Application link →</a>
-        </div>
-      </div>
-
-      <div style="margin-top:32px;">
-        <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px;letter-spacing:0.06em;text-transform:uppercase;">Also required for all applicants</div>
-        <a href="https://cornell.ca1.qualtrics.com/jfe/form/SV_bp7LpXCVGOYVSoC" target="_blank" class="btn-outline" style="text-decoration:none;display:inline-block;">Cornell General Project Team Application →</a>
-      </div>
-
-      <div style="margin-top:40px;padding:20px 24px;border:0.5px solid var(--border);background:var(--bg2);">
-        <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">Questions?</div>
-        <div style="font-size:14px;color:var(--text-mid);">Reach out at <a href="mailto:debut@cornell.edu" style="color:var(--red);text-decoration:none;">debut@cornell.edu</a></div>
-      </div>
-    </div>
-
-    <!-- Right column: FAQ -->
-    <div>
-      <h2 style="font-family:var(--serif);font-size:26px;font-weight:400;margin-bottom:28px;line-height:1.3;">Frequently asked questions.</h2>
-      <div class="faq">
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Do I need to be a BME major to join?</div>
-          <div class="faq-a">Not at all. Our team includes students from over 15 majors across 5 colleges at Cornell — from Computer Science to Industrial &amp; Labor Relations. Passion for biomedical innovation and a willingness to learn are what matter most.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">When do applications open?</div>
-          <div class="faq-a">We recruit at the beginning of each semester — typically in September for fall and January/February for spring. Follow our Instagram or sign up for our newsletter to be notified when applications open.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What year do I need to be?</div>
-          <div class="faq-a">We welcome students of all years. Freshmen are encouraged to apply for Phase I and Business roles. Upperclassmen can apply to any subteam. Phase II tends to require more prior experience in the team's two-year cycle.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">How much time does DEBUT require per week?</div>
-          <div class="faq-a">Expect around 4–6 hours per week including team meetings, subteam work sessions, and independent project work. Time commitments can increase closer to the competition submission deadline in late spring.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">What is the application process?</div>
-          <div class="faq-a">You'll need to complete both the DEBUT-specific application and the Cornell General Project Team Application simultaneously. Shortlisted applicants may be invited to a brief interview with team leads. We aim to notify applicants within two weeks of the deadline.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">Do I need prior research or engineering experience?</div>
-          <div class="faq-a">It's helpful but not required, especially for Business and Phase I R&amp;D roles. We provide training and mentorship within the team. For Phase II R&amp;D, some hands-on lab or design experience is a plus.</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
-    <div class="footer-links">
-      <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
-      <span class="footer-link" onclick="showPage('apply')">Apply</span>
-      <a href="https://instagram.com/cornelldebut" target="_blank" class="footer-link">Instagram</a>
-    </div>
-    <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
-  </footer>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════════════════
-     SPONSORS PAGE
-     To add a sponsor logo: place the image in images/sponsors/ and add
-     an <img> tag in the relevant tier section.
-     ══════════════════════════════════════════════════════════════════════ -->
-<div id="page-sponsors" class="page">
-  <div class="sponsors-hero">
-    <div class="page-eyebrow">Sponsorship</div>
-    <h1 class="page-title">Partner with us.</h1>
-    <p class="page-subtitle">Help bring together a team of incredible minds developing novel biomedical innovations at one of the nation's top engineering universities.</p>
-  </div>
-
-  <div class="sponsors-body">
-    <div class="sponsors-intro">
-      <p>Cornell DEBUT sponsors directly fund undergraduate biomedical research and development — giving students the resources to turn ideas into working prototypes and compete on a national stage.</p>
-      <p>Sponsors gain visibility within Cornell Engineering, access to talented students, and the opportunity to support the next generation of biomedical innovators. All contributions are tax-deductible.</p>
-    </div>
-
-    <!-- Benefits -->
-    <div class="section-label" style="margin-bottom:20px;">Why sponsor DEBUT?</div>
-    <div class="sponsor-benefits">
-      <div class="benefit-card">
-        <div class="benefit-icon">I</div>
-        <div class="benefit-title">Innovation Access</div>
-        <div class="benefit-desc">First look at novel biomedical device concepts developed by Cornell undergraduates, with potential for further research and product development partnerships.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">T</div>
-        <div class="benefit-title">Talent Pipeline</div>
-        <div class="benefit-desc">Direct access to high-achieving students across engineering, business, and sciences — future engineers, researchers, and entrepreneurs.</div>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">V</div>
-        <div class="benefit-title">Visibility</div>
-        <div class="benefit-desc">Logo placement on our website, social media recognition, and presence at team events and Cornell Engineering community outreach.</div>
-      </div>
-    </div>
-
-    <!-- Tiers -->
-    <div class="tiers-section">
-      <h2>Sponsorship tiers.</h2>
-      <div class="tiers-grid">
-        <div class="tier-card">
-          <div class="tier-name">Bronze</div>
-          <div class="tier-amount">$250+</div>
-          <ul class="tier-perks">
-            <li>Logo on website</li>
-            <li>Social media mention</li>
-            <li>Tax deduction</li>
-          </ul>
-        </div>
-        <div class="tier-card">
-          <div class="tier-name">Silver</div>
-          <div class="tier-amount">$500+</div>
-          <ul class="tier-perks">
-            <li>Logo on website</li>
-            <li>Social media feature post</li>
-            <li>Newsletter mention</li>
-            <li>Tax deduction</li>
-          </ul>
-        </div>
-        <div class="tier-card featured">
-          <div class="tier-name">Gold</div>
-          <div class="tier-amount">$1,000+</div>
-          <ul class="tier-perks">
-            <li>Prominent logo placement</li>
-            <li>Dedicated social media post</li>
-            <li>Newsletter feature</li>
-            <li>Recruitment table access</li>
-            <li>Tax deduction</li>
-          </ul>
-        </div>
-        <div class="tier-card">
-          <div class="tier-name">Platinum</div>
-          <div class="tier-amount">$2,500+</div>
-          <ul class="tier-perks">
-            <li>Premier logo placement</li>
-            <li>Regular social features</li>
-            <li>Event sponsorship credit</li>
-            <li>Team presentation opportunity</li>
-            <li>Tax deduction</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="sponsor-cta">
-        <a href="https://raw.githubusercontent.com/ajd323/DEBUT-Website-In-Progress/main/static/Sponsor_Packet_26.pdf" 
-        target="_blank" 
-        class="btn-outline" 
-        style="text-decoration:none;">
-        View 2025–2026 Sponsorship Packet →
-        </a>
-        <div class="sponsor-cta-text">Questions? Reach us at <a href="mailto:debut@cornell.edu" style="color:var(--red);text-decoration:none;">debut@cornell.edu</a></div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
-    <div class="footer-links">
-      <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
-      <span class="footer-link" onclick="showPage('apply')">Apply</span>
-      <a href="https://instagram.com/cornelldebut" target="_blank" class="footer-link">Instagram</a>
-    </div>
-    <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
-  </footer>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════════════════════
-     Past rojects PAGE
-     ══════════════════════════════════════════════════════════════════════ -->
-<div id="page-rnd-devices" class="page">
-  <div class="rnd-hero">
-    <div class="page-eyebrow">Research & Development</div>
-    <h1 class="page-title">Past Projects.</h1>
-    <p class="page-subtitle">Innovative biomedical solutions developed by DEBUT teams and submitted to copmetition.</p>
-  </div>
-
-  <div class="rnd-content">
-      <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/Hembrace_Device.png" alt="HemBrace">
-      <div class="device-year">2025</div>
-      <h3 class="device-name">HemBrace (Postpartum Hemorrhage Monitoring and Response System)</h3>
-      <p class="device-desc">DEBUT developed HemBrace, a low-cost, reusable system for real-time detection and management of postpartum hemorrhage (PPH). The device combines a calibrated flow sensor with a responsive compression belt to measure blood loss and automatically apply graded uterine pressure when excessive bleeding is detected. Data is displayed through an LCD interface with color-coded indicators, while embedded sensors provide feedback to ensure safe and effective compression. Powered by Arduino-based control, the system operates autonomously and adapts to hemorrhage severity. Prototype testing demonstrated high accuracy in both blood loss measurement (96.8%) and pressure response (100%), and when used with existing non-pneumatic anti-shock garments (NASG), HemBrace offers a scalable, cost-effective solution for under-resourced settings.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/MeyeAttention_Device.png" alt="MeyeAttention">
-      <div class="device-year">2025</div>
-      <h3 class="device-name">MeyeAttention (Pupillometry-Based Attention Diagnostic System)</h3>
-      <p class="device-desc">DEBUT developed MeyeAttention, a low-cost, wearable diagnostic support device designed to improve ADHD screening through objective measurement of attention dysregulation. The system uses infrared pupillometry during a brief visual oddball task and applies machine learning algorithms to analyze pupil responses associated with cognitive attention states. By reducing assessment time from hours to under 15 minutes, MeyeAttention enables faster and more accessible screening. The platform also has potential for broader neurological applications, including traumatic brain injury, migraines, and photophobia.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/Nanolist_Device.png" alt="NanoLIST">
-      <div class="device-year">2024</div>
-      <h3 class="device-name">NanoLIST (Non-Invasive Lead Detection in Saliva)</h3>
-      <p class="device-desc">DEBUT developed NanoLIST, a low-cost, rapid saliva-based test kit for detecting lead exposure. The system uses gold nanoparticles that aggregate in the presence of lead ions, producing a visible colorimetric shift. The test consists of a multi-chamber vial system containing reagents including deionized water, hydrochloric acid, gallic acid, and chloroauric acid. The user activates the reaction by mixing saliva with the reagents, initiating nanoparticle synthesis and enabling visual detection of lead contamination within 30 seconds.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/SteadyStride_Device.png" alt="SteadyStride">
-      <div class="device-year">2024</div>
-      <h3 class="device-name">SteadyStride (Self-Stabilizing Cane for Parkinson’s Disease)</h3>
-      <p class="device-desc">DEBUT developed SteadyStride, an assistive cane designed to reduce tremor-induced instability in individuals with Parkinson’s disease. The device integrates a tuned mass damper (TMD) within the cane shaft to attenuate tremor amplitude and a shock-absorbing thermoplastic polyurethane (TPU) base with textured rubberized treads to enhance ground stability. Experimental testing demonstrated an average 12.25% reduction in cane tremors, with 75% of users reporting improved stability and usability.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/MobiLab_Device.png" alt="MobiLab">
-      <div class="device-year">2023</div>
-      <h3 class="device-name">MobiLab (Early-Stage Pancreatic Cancer Detection Platform)</h3>
-      <p class="device-desc">DEBUT developed MobiLab, a lab-on-a-disk diagnostic platform for early detection of pancreatic cancer. The system utilizes microfluidic channels on a rotating disk platform operating at 2000 RPM to drive analyte transport via centripetal force and capillary action. Detection is achieved through gold nanoparticle-based colorimetric assays targeting biomarkers such as miR-143, miR-223, and miR-30e, enabling rapid and sensitive visualization of cancer-related signals.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/BPLP_Device.png" alt="BPLP">
-      <div class="device-year">2023</div>
-      <h3 class="device-name">BPLP (Block Phantom Limb Pain System)</h3>
-      <p class="device-desc">DEBUT developed BPLP, a sense-and-response system designed to mitigate phantom limb pain (PLP) in amputees. The device uses a gyroscope-based motion tracking system to determine the amputated limb's position within the gait cycle. At critical points—specifically when peak pain would normally occur—a TENS unit delivers targeted electrical stimulation to disrupt pain signaling. This coordinated system reduces perceived phantom pain by counteracting aberrant neural firing associated with limb absence.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/Intelli_Patch_Device.png" alt="Intelli-Patch">
-      <div class="device-year">2022</div>
-      <h3 class="device-name">Intelli-Patch (Early Driveline Infection Detector)</h3>
-      <p class="device-desc">DEBUT developed Intelli-Patch, a diagnostic adhesive patch for early detection of driveline infections in left ventricular assist devices (LVADs). The device functions as a "bullseye" sensor that monitors discharge levels and produces a colorimetric change when S. aureus concentrations exceed infectious thresholds. This early detection capability enables patients to seek timely medical intervention, with the potential to reduce infection-related mortality, reimplantation rates, and overall healthcare costs.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/CABG_Device.png" alt="CABG">
-      <div class="device-year">2020</div>
-      <h3 class="device-name">CABG (Coronary Bypass Artery Graft Device)</h3>
-      <p class="device-desc">DEBUT developed CABG, a device designed to improve the efficacy and reliability of coronary artery bypass grafting procedures. The device enhances ease of insertion and reduces postoperative complications, particularly blood leakage at the surgical site. It incorporates a novel attachment mechanism to improve arterial sealing while maintaining cost-effectiveness.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/Septuclip_Device.png" alt="SeptuClip">
-      <div class="device-year">2019</div>
-      <h3 class="device-name">SeptuClip (Intranasal Treatment for Allergic Rhinitis)</h3>
-      <p class="device-desc">DEBUT developed SeptuClip, an intranasal drug delivery device designed as an alternative to traditional allergy medications. The device uses inhalation-facilitated transport to provide continuous, all-day symptom relief. SeptuClip is a disposable, clip-in device that attaches to the nasal septum, enabling locally targeted drug delivery while minimizing drug loss from exhalation.</p>
-    </div>
-
-    <div class="device-block">
-      <img class="device-photo" src="static/DEBUT_DEVICES/Tublox_Device.png" alt="TUBLOX">
-      <div class="device-year">2018</div>
-      <h3 class="device-name">TUBLOX (Reversible Tubal Contraceptive Device)</h3>
-      <p class="device-desc">DEBUT developed TUBLOX, a reversible tubal occlusion device designed as an alternative form of long-acting contraception. The system utilizes a minimally invasive catheter-based procedure in which a balloon catheter is inserted through the vaginal canal, uterus, and into the fallopian tube. The balloon is then inflated with a saline-dye solution and secured in place using a fast-acting adhesive to achieve tubal occlusion. The catheter is subsequently removed below the occlusion site. TUBLOX is designed to prevent fertilization for a minimum of six months and can be reversed upon patient request through surgical deflation and removal, with the option for replacement if desired.</p>
-    </div>
-  </div>
-
- <footer>
-    <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
-    <div class="footer-links">
-      <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
-      <span class="footer-link" onclick="showPage('apply')">Apply</span>
-      <a href="https://instagram.com/cornelldebut" target="_blank" class="footer-link">Instagram</a>
-    </div>
-    <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
-  </footer>
-</div>
-
-
-<!-- JavaScript -->
-<script src="main.js"></script>
+<script src="/main.js"></script>
 
 </body>
 </html>

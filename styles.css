@@ -94,7 +94,7 @@ nav::before {
   background: var(--red);
 }
 
-.nav-brand { display: flex; align-items: center; gap: 11px; cursor: pointer; }
+.nav-brand { display: flex; align-items: center; gap: 11px; cursor: pointer; text-decoration: none; }
 
 .nav-logo {
   height: 125px;
@@ -121,8 +121,10 @@ nav::before {
   border:         none;
   background:     none;
   font-family:    var(--sans);
-  position:       relative;
-  padding-bottom: 2px;
+  position:        relative;
+  padding-bottom:  2px;
+  text-decoration: none;
+  display:         inline-block;
 }
 
 .nav-link::after {
@@ -136,15 +138,31 @@ nav::before {
 
 .nav-link:hover        { color: var(--text); }
 .nav-link:hover::after { width: 100%; }
-.nav-link.active        { color: var(--red); }
-.nav-link.active::after { width: 100%; }
+
+/* Current-page highlight. Each page sets <body data-page="..."> and the
+   matching nav link lights up. Add a pair of selectors here for a new page. */
+body[data-page="home"]          .nav-link[data-nav="home"],
+body[data-page="about"]         .nav-link[data-nav="about"],
+body[data-page="members"]       .nav-link[data-nav="members"],
+body[data-page="past-projects"] .nav-link[data-nav="past-projects"],
+body[data-page="apply"]         .nav-link[data-nav="apply"],
+body[data-page="sponsors"]      .nav-link[data-nav="sponsors"] {
+  color: var(--red);
+}
+body[data-page="home"]          .nav-link[data-nav="home"]::after,
+body[data-page="about"]         .nav-link[data-nav="about"]::after,
+body[data-page="members"]       .nav-link[data-nav="members"]::after,
+body[data-page="past-projects"] .nav-link[data-nav="past-projects"]::after,
+body[data-page="apply"]         .nav-link[data-nav="apply"]::after,
+body[data-page="sponsors"]      .nav-link[data-nav="sponsors"]::after {
+  width: 100%;
+}
 
 
 /* --------------------------------------------------------------------------
    4. Page System
    -------------------------------------------------------------------------- */
-.page { display: none; padding-top: 60px; min-height: 100vh; }
-.page.active { display: block; }
+.page { padding-top: 60px; min-height: 100vh; }
 
 
 /* --------------------------------------------------------------------------
@@ -159,9 +177,12 @@ nav::before {
   background:     var(--red);
   color:          #fff;
   border:         none;
-  cursor:         pointer;
-  transition:     background 0.2s, transform 0.15s;
-  font-family:    var(--sans);
+  cursor:          pointer;
+  transition:      background 0.2s, transform 0.15s;
+  font-family:     var(--sans);
+  text-decoration: none;
+  display:         inline-block;
+  text-align:      center;
 }
 
 .btn-primary:hover { background: #991616; transform: translateY(-1px); }
@@ -175,9 +196,12 @@ nav::before {
   background:     transparent;
   color:          var(--text-mid);
   border:         0.5px solid var(--border-hover);
-  cursor:         pointer;
-  transition:     all 0.2s;
-  font-family:    var(--sans);
+  cursor:          pointer;
+  transition:      all 0.2s;
+  font-family:     var(--sans);
+  text-decoration: none;
+  display:         inline-block;
+  text-align:      center;
 }
 
 .btn-outline:hover { border-color: var(--text-mid); color: var(--text); }

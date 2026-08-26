@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members — Cornell DEBUT</title>
+  <meta name="description" content="Meet the Cornell DEBUT team — 30+ engineers and scientists across six subteams, from Phase 1A through Business.">
+  <link rel="canonical" href="https://cornelldebut.org/members/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="members">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     NAVIGATION — identical on all 6 pages.
+     If you change it, copy this whole block into every page file.
+     The current tab highlights itself from <body data-page="..."> — no JS.
+     ══════════════════════════════════════════════════════════════════════ -->
+<nav>
+  <a href="/" class="nav-brand">
+    <img src="/static/DEBUT_LOGOS/DEBUT_MAIN_LOGO.png" alt="DEBUT Logo" class="nav-logo">
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" data-nav="home"          href="/">Home</a>
+    <a class="nav-link" data-nav="about"         href="/about/">About</a>
+    <a class="nav-link" data-nav="members"       href="/members/">Members</a>
+    <a class="nav-link" data-nav="past-projects" href="/past-projects/">Past Projects</a>
+    <a class="nav-link" data-nav="apply"         href="/apply/">Apply</a>
+    <a class="nav-link" data-nav="sponsors"      href="/sponsors/">Sponsors</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="members-hero">
+    <div class="page-eyebrow">Biomedical Engineering Project Team</div>
+    <h1 class="page-title">Our Team.</h1>
+    <p class="page-subtitle">+30 engineers and scientists across six subteams, working on real biomedical devices from concept to competition.</p>
+  </div>
+
+  <!-- Subteam filter buttons — data-team must match the data-team on each .subteam-section -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterTeam('all', this)">All</button>
+    <button class="filter-btn" onclick="filterTeam('leads', this)">Team Leads</button>
+    <button class="filter-btn" onclick="filterTeam('1a', this)">Phase 1A</button>
+    <button class="filter-btn" onclick="filterTeam('1b', this)">Phase 1B</button>
+    <button class="filter-btn" onclick="filterTeam('2a', this)">Phase 2A</button>
+    <button class="filter-btn" onclick="filterTeam('2b', this)">Phase 2B</button>
+    <button class="filter-btn" onclick="filterTeam('business', this)">Business</button>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+     TEAM ROSTER (DATA + RENDER SCRIPT)
+───────────────────────────────────────────── -->
+
+<div id="team-container"></div>
+
+<script>
+const teams = [
+  {
+    id: "leads",
+    label: "Leadership",
+    title: "Team Leads",
+    members: [
+      { name: "Sally Scofield", img: "/static/DEBUT_HEADSHOTS/Sally_Scofield.JPG", lead: true },
+      { name: "Carol Lyu", img: "/static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true }
+    ]
+  },
+  {
+    id: "1a",
+    label: "Subteam",
+    title: "Phase 1A",
+    members: [
+      { name: "Ian Vann", img: "/static/DEBUT_HEADSHOTS/Ian_Vann.JPG", lead: true },
+      { name: "Elizabeth Paperno", img: "/static/DEBUT_HEADSHOTS/Elizabeth_Paperno.JPG" },
+      { name: "Paige Cobrin", img: "/static/DEBUT_HEADSHOTS/Paige_Cobrin.JPG" },
+      { name: "Anna Chen", img: "/static/DEBUT_HEADSHOTS/ANNA_CHEN.JPG" },
+      { name: "Justin Cohen", img: "/static/DEBUT_HEADSHOTS/JUSTIN_COHEN.JPG" },
+      { name: "Rahul Ramarao", img: "/static/DEBUT_HEADSHOTS/Rahul_Ramarao.JPG" },
+      { name: "Katherine Doniger", img: "/static/DEBUT_HEADSHOTS/KATHERINE_DONIGER.JPG" },
+      { name: "Russell Tan", img: "/static/DEBUT_HEADSHOTS/Russell_Tan.JPG" },
+      { name: "Olivia Jung", img: "/static/DEBUT_HEADSHOTS/Olivia_Jung.JPG" },
+      { name: "Arya Samaratunga", img: "/static/DEBUT_HEADSHOTS/Arya_Samaratunga.JPG" },
+      { name: "Zachary Wei", img: "/static/DEBUT_HEADSHOTS/Zachary_Wei.JPG" }
+    ]
+  },
+  {
+    id: "1b",
+    label: "Subteam",
+    title: "Phase 1B",
+    members: [
+      { name: "Molly Matri", img: "/static/DEBUT_HEADSHOTS/Molly_Matri.JPG", lead: true },
+      { name: "Jedric Jizaiah Aniciete", img: "/static/DEBUT_HEADSHOTS/Jedric_Jizaiah_Aniciete.JPG" },
+      { name: "Mireille Antaki", img: "/static/DEBUT_HEADSHOTS/MireilleAntaki.JPG" },
+      { name: "Cooper Carrozza", img: "/static/DEBUT_HEADSHOTS/Cooper_Carrozza.JPG" },
+      { name: "Evan Chang", img: "/static/DEBUT_HEADSHOTS/EVAN_CHANG.JPG" },
+      { name: "Tristan Gelinas", img: "/static/DEBUT_HEADSHOTS/Tristan_bfsd.JPG" },
+      { name: "Alix Martini" },
+      { name: "Clara Reive", img: "/static/DEBUT_HEADSHOTS/Clara.Reive.JPG" },
+      { name: "Rebecca Schwarzberg" }
+    ]
+  },
+  {
+    id: "2a",
+    label: "Subteam",
+    title: "Phase 2A",
+    members: [
+      { name: "Jess Rakoczy", img: "/static/DEBUT_HEADSHOTS/Jess_Rakoczy.JPG", lead: true },
+      { name: "Andrew Leibowitz", img: "/static/DEBUT_HEADSHOTS/Andrew_Liebowitz.JPG" },
+      { name: "Asher Ciardiello", img: "/static/DEBUT_HEADSHOTS/Asher_Ciardiello.JPG" },
+      { name: "Felix Grimm", img: "/static/DEBUT_HEADSHOTS/Felix_Grimm.JPG" },
+      { name: "Gloria Zhang", img: "/static/DEBUT_HEADSHOTS/Gloria_Zhang.JPG" },
+      { name: "Nana Jiraphanphong", img: "/static/DEBUT_HEADSHOTS/Nana_Jiraphanphong .JPG" },
+      { name: "Nathan Choi", img: "/static/DEBUT_HEADSHOTS/NATHAN_CHOI.PNG" },
+      { name: "Zayaan Hussain", img: "/static/DEBUT_HEADSHOTS/Zayaan_Hussain.JPG" }
+    ]
+  },
+  {
+    id: "2b",
+    label: "Subteam",
+    title: "Phase 2B",
+    members: [
+      { name: "Andrew D'Onofrio", img: "/static/DEBUT_HEADSHOTS/Andrew_DOnofrio.jpg", lead: true },
+      { name: "Emma Weiss", img: "/static/DEBUT_HEADSHOTS/Emma_Weiss.png" },
+      { name: "Ally Schwartz", img: "/static/DEBUT_HEADSHOTS/AllySchwartz.JPG" },
+      { name: "Nitish Bhamidipati", img: "/static/DEBUT_HEADSHOTS/Nitish_Bhamidipati.JPG" },
+      { name: "Connie Anagnos", img: "/static/DEBUT_HEADSHOTS/Connie_Anagnos.JPG" },
+      { name: "Holbrook Langley", img: "/static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG" },
+      { name: "Syon Khatter", img: "/static/DEBUT_HEADSHOTS/Syon_Khatter.JPG" },
+      { name: "Bhumika Iroji", img: "/static/DEBUT_HEADSHOTS/Bhumika_Iroji.JPG" },
+      { name: "Rawsen Weideman", img: "/static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG" },
+      { name: "Nathan Briard", img: "/static/DEBUT_HEADSHOTS/Nathan_Briard.JPG" }
+    ]
+  },
+  {
+    id: "business",
+    label: "Subteam",
+    title: "Business",
+    members: [
+      { name: "Gabriel Benavidez", img: "/static/DEBUT_HEADSHOTS/Gabriel_Benavidez.JPG", lead: true },
+      { name: "Christine Lim" },
+      { name: "Alexander Yeung", img: "/static/DEBUT_HEADSHOTS/Alexander_Yeung.JPG" },
+      { name: "Michelle Park" },
+      { name: "Zea Khoja", img: "/static/DEBUT_HEADSHOTS/ZEA_KHOJA.JPG" },
+      { name: "Lena Thai", img: "/static/DEBUT_HEADSHOTS/Lena_Thai.JPG" },
+      { name: "Ethan Huang", img: "/static/DEBUT_HEADSHOTS/Ethan_Huang.JPG" }
+    ]
+  }
+];
+
+// ─────────────────────────────
+// RENDER FUNCTION
+// ─────────────────────────────
+const container = document.getElementById("team-container");
+
+teams.forEach(team => {
+  const section = document.createElement("div");
+  section.className = "subteam-section";
+  section.dataset.team = team.id;
+
+  section.innerHTML = `
+    <div class="subteam-header">
+      <span class="subteam-section-label">${team.label}</span>
+      <span class="subteam-section-title">${team.title}</span>
+    </div>
+    <div class="members-grid">
+      ${team.members.map(m => `
+        <div class="member-card">
+          ${m.img 
+            ? `<img loading="lazy" decoding="async" src="${m.img}" alt="${m.name}">` 
+            : `<div class="member-no-photo">${m.name.charAt(0)}</div>`}
+          <div class="member-name">
+            ${m.name}${m.lead ? ` <span class="member-lead-tag">Lead</span>` : ""}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+
+  container.appendChild(section);
+});
+</script>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     FOOTER — identical on all 6 pages. Copy to every file if changed.
+     ══════════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
+  <div class="footer-links">
+    <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
+    <a href="/apply/" class="footer-link">Apply</a>
+    <a href="https://instagram.com/cornelldebut" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Cornell DEBUT. A registered student organization of Cornell University.</div>
+</footer>
+
+<script src="/main.js"></script>
+
+</body>
+</html>
