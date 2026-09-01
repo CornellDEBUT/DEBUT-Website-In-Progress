@@ -246,22 +246,24 @@ footer {
 
 /* Statements — full-width row beneath the main footer line */
 .footer-statements {
-  flex-basis:  100%;
-  display:     flex;
-  flex-wrap:   wrap;
-  align-items: center;
-  gap:         8px 20px;
-  padding-top: 20px;
-  border-top:  1px solid rgba(12,12,12,0.08);
-  font-size:   13px;
-  line-height: 1.5;
-  color:       rgba(12,12,12,0.35);
+  flex-basis:     100%;
+  display:        flex;
+  flex-wrap:      wrap;
+  align-items:    center;
+  gap:            10px 28px;
+  padding-top:    20px;
+  border-top:     1px solid var(--border);
+  font-size:      13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height:    1.6;
+  color:          rgba(12,12,12,0.2);
 }
 
 .footer-statement-link {
-  color:           rgba(12,12,12,0.35);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color:           var(--text-dim);
+  text-decoration: none;
+  cursor:          pointer;
   transition:      color 0.2s;
 }
 
