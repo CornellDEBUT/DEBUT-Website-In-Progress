@@ -244,6 +244,29 @@ footer {
 
 .footer-copy { font-size: 13px; color: rgba(12,12,12,0.2); }
 
+/* Statements — full-width row beneath the main footer line */
+.footer-statements {
+  flex-basis:  100%;
+  display:     flex;
+  flex-wrap:   wrap;
+  align-items: center;
+  gap:         8px 20px;
+  padding-top: 20px;
+  border-top:  1px solid rgba(12,12,12,0.08);
+  font-size:   13px;
+  line-height: 1.5;
+  color:       rgba(12,12,12,0.35);
+}
+
+.footer-statement-link {
+  color:           rgba(12,12,12,0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition:      color 0.2s;
+}
+
+.footer-statement-link:hover { color: var(--red); }
+
 
 /* --------------------------------------------------------------------------
    7. Home — Hero
@@ -1548,6 +1571,13 @@ footer {
   .footer-links {
     flex-direction: column;
     gap:            10px;
+  }
+
+  .footer-statements {
+    flex-direction: column;
+    align-items:    flex-start;
+    gap:            10px;
+    padding-top:    16px;
   }
 
 
