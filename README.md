@@ -13,13 +13,14 @@ debut-website/
 ├── index.html                  # Home page          →  /
 ├── about/index.html            # About page         →  /about
 ├── members/index.html          # Members page       →  /members
+├── alumni/index.html           # Alumni page        →  /alumni
 ├── past-projects/index.html    # Past projects      →  /past-projects
 ├── apply/index.html            # Apply page         →  /apply
 ├── sponsors/index.html         # Sponsors page      →  /sponsors
 ├── styles.css                  # All styles, organized by section
-├── main.js                     # Member filter, FAQ accordion
+├── main.js                     # Roster filter, FAQ accordion
 ├── static/
-│   ├── DEBUT_HEADSHOTS/        # Member headshots (JPG/PNG)
+│   ├── DEBUT_HEADSHOTS/        # Member + alumni headshots (JPG/PNG)
 │   ├── DEBUT_DEVICES/          # Past project device photos
 │   ├── DEBUT_B_ROLL/           # Team / lab photos
 │   ├── DEBUT_WINNER/           # Competition win photos
@@ -65,6 +66,7 @@ Then open <http://localhost:8137>.
 | Home | Hero, stats bar, mission statement, subteam overview, alumni ticker |
 | About | DEBUT competition info, analyst roles, team composition, project timeline |
 | Members | Headshot grid filterable by subteam |
+| Alumni | Headshot grid filterable by graduating class |
 | Apply | Application links, open/closed status badge, FAQ accordion |
 | Sponsors | Benefits, sponsorship tiers, sponsor form link |
 
@@ -110,7 +112,7 @@ Then update the application links — replace the `<span class="apply-pos-link">
 1. Copy an existing page folder (e.g. `about/`) to a new folder, e.g. `outreach/`
 2. Change `<title>`, the `description` meta tag, the `canonical` link, and
    `<body data-page="outreach">`
-3. Add the nav link to **all six** existing pages plus the new one:
+3. Add the nav link to **all seven** existing pages plus the new one:
    ```html
    <a class="nav-link" data-nav="outreach" href="/outreach/">Outreach</a>
    ```
@@ -127,6 +129,27 @@ Then update the application links — replace the `<span class="apply-pos-link">
    ```js
    { id: "newteam", label: "Subteam", title: "New Team", members: [ ... ] }
    ```
+
+### Add an alumnus
+
+1. Add the headshot to `static/DEBUT_HEADSHOTS/` (optional — a lettered
+   placeholder is used when there is no photo)
+2. Open `alumni/index.html` and find the `classes` array in the `<script>` block
+3. Find the graduating-class object (e.g. `id: "2025"`) and add an entry to its
+   `members` list:
+
+```js
+{ name: "First Last", img: "/static/DEBUT_HEADSHOTS/First_Last.JPG", note: "Phase 2A" }
+```
+
+- `note` is an optional small grey line under the name — former subteam,
+  current role, grad school, anything short
+- `lead: true` adds the red "Lead" tag, same as on the Members page
+
+To add a new graduating class, copy one of the objects in `classes` and change
+its `id` (e.g. `"2022"`) and `title` (e.g. `"Class of 2022"`). Put the newest
+class first — the filter buttons are generated from this array, so no HTML edit
+is needed.
 
 ### Update alumni placements ticker
 

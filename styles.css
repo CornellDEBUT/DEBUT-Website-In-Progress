@@ -144,6 +144,7 @@ nav::before {
 body[data-page="home"]          .nav-link[data-nav="home"],
 body[data-page="about"]         .nav-link[data-nav="about"],
 body[data-page="members"]       .nav-link[data-nav="members"],
+body[data-page="alumni"]        .nav-link[data-nav="alumni"],
 body[data-page="past-projects"] .nav-link[data-nav="past-projects"],
 body[data-page="apply"]         .nav-link[data-nav="apply"],
 body[data-page="sponsors"]      .nav-link[data-nav="sponsors"] {
@@ -152,6 +153,7 @@ body[data-page="sponsors"]      .nav-link[data-nav="sponsors"] {
 body[data-page="home"]          .nav-link[data-nav="home"]::after,
 body[data-page="about"]         .nav-link[data-nav="about"]::after,
 body[data-page="members"]       .nav-link[data-nav="members"]::after,
+body[data-page="alumni"]        .nav-link[data-nav="alumni"]::after,
 body[data-page="past-projects"] .nav-link[data-nav="past-projects"]::after,
 body[data-page="apply"]         .nav-link[data-nav="apply"]::after,
 body[data-page="sponsors"]      .nav-link[data-nav="sponsors"]::after {
@@ -433,7 +435,7 @@ footer {
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .role-cards { grid-template-columns: 1fr; }
   nav { padding: 0 24px; }
-  .filter-row, .members-content, #team-container { padding-left: 24px; padding-right: 24px; }
+  .filter-row, .members-content, #team-container, #alumni-container { padding-left: 24px; padding-right: 24px; }
   .about-body, .apply-body, .sponsors-body, .rnd-content { padding-left: 24px; padding-right: 24px; }
   .members-hero, .apply-hero, .sponsors-hero, .rnd-hero, .about-hero { padding-left: 24px; padding-right: 24px; }
   footer { padding: 32px 24px; }
@@ -1065,7 +1067,8 @@ footer {
 .members-content { padding: 52px 52px 88px; }
 .subteam-section  { margin-bottom: 60px; }
 
-#team-container { padding: 52px 52px 88px; }
+#team-container,
+#alumni-container { padding: 52px 52px 88px; }
 
 .subteam-header {
   margin-bottom:  28px;
@@ -1171,6 +1174,12 @@ footer {
 .member-card:hover .member-info { border-color: var(--red); }
 
 .member-name { font-size: 14px; font-weight: 400; color: var(--text); margin-top: 10px; line-height: 1.4; }
+
+/* Small grey line under an alumni name — former subteam, current role, etc. */
+.member-note { font-size: 13px; color: var(--text-dim); margin-top: 4px; line-height: 1.5; }
+
+/* Shown in place of the grid when a class year has no entries yet. */
+.alumni-empty { font-size: 15px; color: var(--text-dim); font-style: italic; }
 
 .member-lead-tag {
   font-size:      11px;
@@ -1625,10 +1634,12 @@ footer {
   }
 
   .members-content,
-  #team-container { padding: 24px 20px; }
+  #team-container,
+  #alumni-container { padding: 24px 20px; }
 
   /* Tighter member grid — 2 per row */
   #team-container > div,
+  #alumni-container > div,
   .subteam-section {
     display: block;
   }
