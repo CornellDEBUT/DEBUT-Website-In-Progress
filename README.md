@@ -65,7 +65,7 @@ Then open <http://localhost:8137>.
 |------|-------------|
 | Home | Hero, stats bar, mission statement, subteam overview, alumni ticker |
 | About | DEBUT competition info, analyst roles, team composition, project timeline |
-| Members | Headshot grid filterable by subteam |
+| Members | Headshot grid filterable by subteam; cards with a bio flip on click |
 | Alumni | Headshot grid filterable by graduating class |
 | Apply | Application links, open/closed status badge, FAQ accordion |
 | Sponsors | Benefits, sponsorship tiers, sponsor form link |
@@ -88,6 +88,24 @@ Then open <http://localhost:8137>.
 5. For a member with no photo, use `img: null` — their initial is shown instead
 
 The cards are generated from this array, so you never edit HTML for a roster change.
+
+### Add a member bio (flip card)
+
+Give a member a `bio` in the `teams` array in `members/index.html`:
+
+```js
+{ name: "First Last", img: "/static/DEBUT_HEADSHOTS/First_Last.JPG",
+  bio: "Junior in BME. Works on the microfluidics rig." }
+```
+
+That card then **flips when clicked**, showing the bio on the back. A small
+"Bio" hint appears on hover so visitors know the card is clickable, and Enter
+or Space works when the card is focused via keyboard.
+
+Members without a `bio` keep a plain, non-clickable photo — so bios can be
+added one person at a time without leaving placeholder text on the site.
+
+Keep bios to roughly 220 characters; longer ones scroll inside the card.
 
 ### Toggle application status open/closed
 

@@ -48,12 +48,12 @@
   <div class="filter-row">
     <button class="filter-btn active" onclick="filterTeam('all', this)">All</button>
     <button class="filter-btn" onclick="filterTeam('leads', this)">Team Leads</button>
-    <button class="filter-btn" onclick="filterTeam('consultants', this)">Senior Consultants</button>
     <button class="filter-btn" onclick="filterTeam('1a', this)">Phase 1A</button>
     <button class="filter-btn" onclick="filterTeam('1b', this)">Phase 1B</button>
     <button class="filter-btn" onclick="filterTeam('2a', this)">Phase 2A</button>
     <button class="filter-btn" onclick="filterTeam('2b', this)">Phase 2B</button>
     <button class="filter-btn" onclick="filterTeam('business', this)">Business</button>
+    <button class="filter-btn" onclick="filterTeam('consultants', this)">Senior Consultants</button>
   </div>
 
   <!-- ─────────────────────────────────────────────
@@ -63,6 +63,25 @@
 <div id="team-container"></div>
 
 <script>
+/* ────────────────────────────────────────────────────────────────────────
+   ROSTER DATA
+
+   Per member:
+     name  — required
+     img   — optional; without it the card shows a lettered placeholder
+     lead  — optional; adds the red "LEAD" badge
+     tag   — optional; custom badge text in place of "LEAD" (e.g. "Elect")
+     bio   — optional; a brief bio. Adding one makes the card FLIP when
+             clicked, showing the bio on the back. Members without a bio
+             keep a plain, non-clickable photo, so you can add them one at
+             a time. Keep it to a couple of sentences — roughly 220
+             characters fits without the back needing to scroll. Example:
+
+               { name: "Jane Doe",
+                 img:  "/static/DEBUT_HEADSHOTS/Jane_Doe.JPG",
+                 bio:  "Junior in BME. Works on the microfluidics rig and
+                        ran last year's user-testing sessions." }
+   ──────────────────────────────────────────────────────────────────────── */
 const teams = [
   {
     id: "leads",
@@ -73,15 +92,6 @@ const teams = [
       { name: "Carol Lyu", img: "/static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true },
       { name: "Holbrook Langley", img: "/static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG", tag: "Elect" },
       { name: "Nathan Briard", img: "/static/DEBUT_HEADSHOTS/Nathan_Briard.JPG", tag: "Elect" }
-    ]
-  },
-  {
-    id: "consultants",
-    label: "Advisory",
-    title: "Senior Consultants",
-    members: [
-      { name: "Jess Rakoczy", img: "/static/DEBUT_HEADSHOTS/Jess_Rakoczy.JPG" },
-      { name: "Gabriel Benavidez", img: "/static/DEBUT_HEADSHOTS/Gabriel_Benavidez.JPG" }
     ]
   },
   {
@@ -103,10 +113,10 @@ const teams = [
     label: "Subteam",
     title: "Phase 1B",
     members: [
+      { name: "Bhumika Iroji", img: "/static/DEBUT_HEADSHOTS/Bhumika_Iroji.JPG", lead: true },
       { name: "Nitish Bhamidipati", img: "/static/DEBUT_HEADSHOTS/Nitish_Bhamidipati.JPG" },
       { name: "Connie Anagnos", img: "/static/DEBUT_HEADSHOTS/Connie_Anagnos.JPG" },
       { name: "Syon Khatter", img: "/static/DEBUT_HEADSHOTS/Syon_Khatter.JPG" },
-      { name: "Bhumika Iroji", img: "/static/DEBUT_HEADSHOTS/Bhumika_Iroji.JPG", lead: true },
       { name: "Rawsen Weideman", img: "/static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG" }
     ]
   },
@@ -156,6 +166,15 @@ const teams = [
       { name: "Lena Thai", img: "/static/DEBUT_HEADSHOTS/Lena_Thai.JPG" },
       { name: "Ethan Huang", img: "/static/DEBUT_HEADSHOTS/Ethan_Huang.JPG" }
     ]
+  },
+  {
+    id: "consultants",
+    label: "Advisory",
+    title: "Senior Consultants",
+    members: [
+      { name: "Jess Rakoczy", img: "/static/DEBUT_HEADSHOTS/Jess_Rakoczy.JPG" },
+      { name: "Gabriel Benavidez", img: "/static/DEBUT_HEADSHOTS/Gabriel_Benavidez.JPG" }
+    ]
   }
 ];
 
@@ -175,16 +194,39 @@ teams.forEach(team => {
       <span class="subteam-section-title">${team.title}</span>
     </div>
     <div class="members-grid">
-      ${team.members.map(m => `
+      ${team.members.map(m => {
+        const photo = m.img
+          ? `<img loading="lazy" decoding="async" src="${m.img}" alt="${m.name}">`
+          : `<div class="member-no-photo">${m.name.charAt(0)}</div>`;
+
+        const tag = m.tag  ? ` <span class="member-lead-tag">${m.tag}</span>`
+                  : m.lead ? ` <span class="member-lead-tag">Lead</span>`
+                  : "";
+
+        // Members with a `bio` get a card that flips on click to show it.
+        // Members without one render exactly as before — a plain photo.
+        const face = m.bio
+          ? `<div class="member-flip" role="button" tabindex="0" aria-pressed="false"
+                  aria-label="Show bio for ${m.name}"
+                  onclick="flipCard(this)" onkeydown="flipCardKey(event, this)">
+               <div class="member-flip-inner">
+                 <div class="member-face member-face-front">
+                   ${photo}
+                   <span class="member-flip-hint">Bio</span>
+                 </div>
+                 <div class="member-face member-face-back">
+                   <p>${m.bio}</p>
+                 </div>
+               </div>
+             </div>`
+          : photo;
+
+        return `
         <div class="member-card">
-          ${m.img 
-            ? `<img loading="lazy" decoding="async" src="${m.img}" alt="${m.name}">` 
-            : `<div class="member-no-photo">${m.name.charAt(0)}</div>`}
-          <div class="member-name">
-            ${m.name}${m.tag ? ` <span class="member-lead-tag">${m.tag}</span>` : m.lead ? ` <span class="member-lead-tag">Lead</span>` : ""}
-          </div>
-        </div>
-      `).join("")}
+          ${face}
+          <div class="member-name">${m.name}${tag}</div>
+        </div>`;
+      }).join("")}
     </div>
   `;
 

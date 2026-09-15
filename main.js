@@ -8,7 +8,9 @@
    Functions:
    - filterTeam(team, btn) — filters a roster grid by section
                              (members page: subteam; alumni page: class year)
-   - toggleFaq(el)         — opens/closes a FAQ accordion item    (apply page)
+   - flipCard(el)          — flips a member card to its bio        (members page)
+   - flipCardKey(e, el)    — keyboard handler for the above        (members page)
+   - toggleFaq(el)         — opens/closes a FAQ accordion item     (apply page)
    ========================================================================== */
 
 
@@ -42,4 +44,32 @@ function filterTeam(team, btn) {
  */
 function toggleFaq(questionEl) {
   questionEl.parentElement.classList.toggle('open');
+}
+
+
+/**
+ * flipCard
+ * Flips a member card between its photo and its bio.
+ * Only cards for members with a `bio` in the roster data render this wrapper.
+ *
+ * @param {HTMLElement} el — the .member-flip wrapper that was clicked
+ */
+function flipCard(el) {
+  const flipped = el.classList.toggle('flipped');
+  el.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+}
+
+
+/**
+ * flipCardKey
+ * Lets Enter and Space flip a card, so it works without a mouse.
+ *
+ * @param {KeyboardEvent} e
+ * @param {HTMLElement} el — the .member-flip wrapper
+ */
+function flipCardKey(e, el) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    flipCard(el);
+  }
 }
