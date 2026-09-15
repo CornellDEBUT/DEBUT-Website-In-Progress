@@ -48,6 +48,7 @@
   <div class="filter-row">
     <button class="filter-btn active" onclick="filterTeam('all', this)">All</button>
     <button class="filter-btn" onclick="filterTeam('leads', this)">Team Leads</button>
+    <button class="filter-btn" onclick="filterTeam('consultants', this)">Senior Consultants</button>
     <button class="filter-btn" onclick="filterTeam('1a', this)">Phase 1A</button>
     <button class="filter-btn" onclick="filterTeam('1b', this)">Phase 1B</button>
     <button class="filter-btn" onclick="filterTeam('2a', this)">Phase 2A</button>
@@ -69,13 +70,50 @@ const teams = [
     title: "Team Leads",
     members: [
       { name: "Sally Scofield", img: "/static/DEBUT_HEADSHOTS/Sally_Scofield.JPG", lead: true },
-      { name: "Carol Lyu", img: "/static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true }
+      { name: "Carol Lyu", img: "/static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true },
+      { name: "Holbrook Langley", img: "/static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG", tag: "Elect" },
+      { name: "Nathan Briard", img: "/static/DEBUT_HEADSHOTS/Nathan_Briard.JPG", tag: "Elect" }
+    ]
+  },
+  {
+    id: "consultants",
+    label: "Advisory",
+    title: "Senior Consultants",
+    members: [
+      { name: "Jess Rakoczy", img: "/static/DEBUT_HEADSHOTS/Jess_Rakoczy.JPG" },
+      { name: "Gabriel Benavidez", img: "/static/DEBUT_HEADSHOTS/Gabriel_Benavidez.JPG" }
     ]
   },
   {
     id: "1a",
     label: "Subteam",
     title: "Phase 1A",
+    members: [
+      { name: "Andrew Leibowitz", img: "/static/DEBUT_HEADSHOTS/Andrew_Liebowitz.JPG", lead: true },
+      { name: "Asher Ciardiello", img: "/static/DEBUT_HEADSHOTS/Asher_Ciardiello.JPG" },
+      { name: "Felix Grimm", img: "/static/DEBUT_HEADSHOTS/Felix_Grimm.JPG" },
+      { name: "Gloria Zhang", img: "/static/DEBUT_HEADSHOTS/Gloria_Zhang.JPG" },
+      { name: "Nana Jiraphanphong", img: "/static/DEBUT_HEADSHOTS/Nana_Jiraphanphong .JPG" },
+      { name: "Nathan Choi", img: "/static/DEBUT_HEADSHOTS/NATHAN_CHOI.PNG" },
+      { name: "Zayaan Hussain", img: "/static/DEBUT_HEADSHOTS/Zayaan_Hussain.JPG" }
+    ]
+  },
+  {
+    id: "1b",
+    label: "Subteam",
+    title: "Phase 1B",
+    members: [
+      { name: "Nitish Bhamidipati", img: "/static/DEBUT_HEADSHOTS/Nitish_Bhamidipati.JPG" },
+      { name: "Connie Anagnos", img: "/static/DEBUT_HEADSHOTS/Connie_Anagnos.JPG" },
+      { name: "Syon Khatter", img: "/static/DEBUT_HEADSHOTS/Syon_Khatter.JPG" },
+      { name: "Bhumika Iroji", img: "/static/DEBUT_HEADSHOTS/Bhumika_Iroji.JPG", lead: true },
+      { name: "Rawsen Weideman", img: "/static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG" }
+    ]
+  },
+  {
+    id: "2a",
+    label: "Subteam",
+    title: "Phase 2A",
     members: [
       { name: "Ian Vann", img: "/static/DEBUT_HEADSHOTS/Ian_Vann.JPG", lead: true },
       { name: "Elizabeth Paperno", img: "/static/DEBUT_HEADSHOTS/Elizabeth_Paperno.JPG" },
@@ -91,9 +129,9 @@ const teams = [
     ]
   },
   {
-    id: "1b",
+    id: "2b",
     label: "Subteam",
-    title: "Phase 1B",
+    title: "Phase 2B",
     members: [
       { name: "Molly Matri", img: "/static/DEBUT_HEADSHOTS/Molly_Matri.JPG", lead: true },
       { name: "Jedric Jizaiah Aniciete", img: "/static/DEBUT_HEADSHOTS/Jedric_Jizaiah_Aniciete.JPG" },
@@ -107,44 +145,14 @@ const teams = [
     ]
   },
   {
-    id: "2a",
-    label: "Subteam",
-    title: "Phase 2A",
-    members: [
-      { name: "Jess Rakoczy", img: "/static/DEBUT_HEADSHOTS/Jess_Rakoczy.JPG", lead: true },
-      { name: "Andrew Leibowitz", img: "/static/DEBUT_HEADSHOTS/Andrew_Liebowitz.JPG" },
-      { name: "Asher Ciardiello", img: "/static/DEBUT_HEADSHOTS/Asher_Ciardiello.JPG" },
-      { name: "Felix Grimm", img: "/static/DEBUT_HEADSHOTS/Felix_Grimm.JPG" },
-      { name: "Gloria Zhang", img: "/static/DEBUT_HEADSHOTS/Gloria_Zhang.JPG" },
-      { name: "Nana Jiraphanphong", img: "/static/DEBUT_HEADSHOTS/Nana_Jiraphanphong .JPG" },
-      { name: "Nathan Choi", img: "/static/DEBUT_HEADSHOTS/NATHAN_CHOI.PNG" },
-      { name: "Zayaan Hussain", img: "/static/DEBUT_HEADSHOTS/Zayaan_Hussain.JPG" }
-    ]
-  },
-  {
-    id: "2b",
-    label: "Subteam",
-    title: "Phase 2B",
-    members: [
-      { name: "Nitish Bhamidipati", img: "/static/DEBUT_HEADSHOTS/Nitish_Bhamidipati.JPG" },
-      { name: "Connie Anagnos", img: "/static/DEBUT_HEADSHOTS/Connie_Anagnos.JPG" },
-      { name: "Holbrook Langley", img: "/static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG" },
-      { name: "Syon Khatter", img: "/static/DEBUT_HEADSHOTS/Syon_Khatter.JPG" },
-      { name: "Bhumika Iroji", img: "/static/DEBUT_HEADSHOTS/Bhumika_Iroji.JPG" },
-      { name: "Rawsen Weideman", img: "/static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG" },
-      { name: "Nathan Briard", img: "/static/DEBUT_HEADSHOTS/Nathan_Briard.JPG" }
-    ]
-  },
-  {
     id: "business",
     label: "Subteam",
     title: "Business",
     members: [
-      { name: "Gabriel Benavidez", img: "/static/DEBUT_HEADSHOTS/Gabriel_Benavidez.JPG", lead: true },
       { name: "Christine Lim" },
-      { name: "Alexander Yeung", img: "/static/DEBUT_HEADSHOTS/Alexander_Yeung.JPG" },
+      { name: "Alexander Yeung", img: "/static/DEBUT_HEADSHOTS/Alexander_Yeung.JPG", lead: true },
       { name: "Michelle Park" },
-      { name: "Zea Khoja", img: "/static/DEBUT_HEADSHOTS/ZEA_KHOJA.JPG" },
+      { name: "Zea Khoja", img: "/static/DEBUT_HEADSHOTS/ZEA_KHOJA.JPG", lead: true },
       { name: "Lena Thai", img: "/static/DEBUT_HEADSHOTS/Lena_Thai.JPG" },
       { name: "Ethan Huang", img: "/static/DEBUT_HEADSHOTS/Ethan_Huang.JPG" }
     ]
@@ -173,7 +181,7 @@ teams.forEach(team => {
             ? `<img loading="lazy" decoding="async" src="${m.img}" alt="${m.name}">` 
             : `<div class="member-no-photo">${m.name.charAt(0)}</div>`}
           <div class="member-name">
-            ${m.name}${m.lead ? ` <span class="member-lead-tag">Lead</span>` : ""}
+            ${m.name}${m.tag ? ` <span class="member-lead-tag">${m.tag}</span>` : m.lead ? ` <span class="member-lead-tag">Lead</span>` : ""}
           </div>
         </div>
       `).join("")}
