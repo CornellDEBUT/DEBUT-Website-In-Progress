@@ -1181,6 +1181,103 @@ footer {
 /* Shown in place of the grid when a class year has no entries yet. */
 .alumni-empty { font-size: 15px; color: var(--text-dim); font-style: italic; }
 
+/* Flip card — rendered only for members who have a `bio` in the roster data.
+   Click (or Enter/Space when focused) rotates the photo to reveal the bio. */
+.member-flip {
+  perspective:   1000px;
+  cursor:        pointer;
+  border-radius: 4px;
+}
+
+.member-flip:focus-visible {
+  outline:        2px solid var(--red);
+  outline-offset: 3px;
+}
+
+.member-flip-inner {
+  position:        relative;
+  width:           100%;
+  aspect-ratio:    1 / 1;
+  transform-style: preserve-3d;
+  transition:      transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.member-flip.flipped .member-flip-inner { transform: rotateY(180deg); }
+
+.member-face {
+  position:                 absolute;
+  inset:                    0;
+  backface-visibility:      hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius:            4px;
+  overflow:                 hidden;
+  /* Chrome still hit-tests a face that is rotated away from the viewer, so the
+     back would swallow clicks meant for the photo. Swapping opacity and
+     pointer-events at the midpoint of the rotation keeps the correct face
+     both visible and clickable. */
+  transition:               opacity 0s linear 0.275s;
+}
+
+.member-face-back  { opacity: 0; pointer-events: none; }
+
+.member-flip.flipped .member-face-back  { opacity: 1; pointer-events: auto; }
+.member-flip.flipped .member-face-front { opacity: 0; pointer-events: none; }
+
+.member-face-front img,
+.member-face-front .member-no-photo { width: 100%; height: 100%; }
+
+/* Hold the photo still while it is rotating away. */
+.member-flip.flipped img { transform: none; }
+
+.member-face-back {
+  transform:   rotateY(180deg);
+  background:  var(--bg2);
+  border:      0.5px solid var(--border);
+  border-left: 2px solid var(--red);
+  padding:     20px;
+  display:     flex;
+  align-items: center;
+  overflow-y:  auto;
+}
+
+.member-face-back p {
+  margin:      0;
+  font-size:   13px;
+  line-height: 1.65;
+  color:       var(--text-mid);
+}
+
+/* Small affordance so it is clear the card can be clicked. */
+.member-flip-hint {
+  position:       absolute;
+  right: 8px; bottom: 8px;
+  font-size:      10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--red);
+  background:     rgba(255, 255, 255, 0.92);
+  padding:        3px 7px;
+  border-radius:  2px;
+  opacity:        0;
+  transition:     opacity 0.2s;
+  pointer-events: none;
+}
+
+.member-flip:hover .member-flip-hint,
+.member-flip:focus-visible .member-flip-hint { opacity: 1; }
+.member-flip.flipped .member-flip-hint { opacity: 0; }
+
+/* Touch devices have no hover, so keep the hint visible there. */
+@media (hover: none) {
+  .member-flip-hint { opacity: 1; }
+}
+
+/* Respect a reduced-motion preference — swap instantly instead of rotating. */
+@media (prefers-reduced-motion: reduce) {
+  .member-flip-inner { transition: none; }
+  .member-face       { transition-delay: 0s; }
+}
+
 .member-lead-tag {
   font-size:      11px;
   letter-spacing: 0.12em;
