@@ -6,14 +6,16 @@
    code here — navigation is plain links and the browser handles it.
 
    Functions:
-   - filterTeam(team, btn) — filters the members grid by subteam  (members page)
+   - filterTeam(team, btn) — filters a roster grid by section
+                             (members page: subteam; alumni page: class year)
    - toggleFaq(el)         — opens/closes a FAQ accordion item    (apply page)
    ========================================================================== */
 
 
 /**
  * filterTeam
- * Shows only the subteam section matching `team`, or all if 'all'.
+ * Shows only the .subteam-section matching `team`, or all if 'all'.
+ * Used by both the members page (subteams) and the alumni page (class years).
  * Updates the active filter button.
  *
  * @param {string} team — data-team attribute value, or 'all'

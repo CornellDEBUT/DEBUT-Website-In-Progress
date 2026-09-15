@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni — Cornell DEBUT</title>
+  <meta name="description" content="Cornell DEBUT alumni, by graduating class — the engineers and scientists who built our devices before us.">
+  <link rel="canonical" href="https://cornelldebut.org/alumni/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="alumni">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     NAVIGATION — identical on all 7 pages.
+     If you change it, copy this whole block into every page file.
+     The current tab highlights itself from <body data-page="..."> — no JS.
+     ══════════════════════════════════════════════════════════════════════ -->
+<nav>
+  <a href="/" class="nav-brand">
+    <img src="/static/DEBUT_LOGOS/DEBUT_MAIN_LOGO.png" alt="DEBUT Logo" class="nav-logo">
+  </a>
+  <div class="nav-links">
+    <a class="nav-link" data-nav="home"          href="/">Home</a>
+    <a class="nav-link" data-nav="about"         href="/about/">About</a>
+    <a class="nav-link" data-nav="members"       href="/members/">Members</a>
+    <a class="nav-link" data-nav="alumni"        href="/alumni/">Alumni</a>
+    <a class="nav-link" data-nav="past-projects" href="/past-projects/">Past Projects</a>
+    <a class="nav-link" data-nav="apply"         href="/apply/">Apply</a>
+    <a class="nav-link" data-nav="sponsors"      href="/sponsors/">Sponsors</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="members-hero">
+    <div class="page-eyebrow">Biomedical Engineering Project Team</div>
+    <h1 class="page-title">Our Alumni.</h1>
+    <p class="page-subtitle">The engineers and scientists who built DEBUT before us — grouped by graduating class.</p>
+  </div>
+
+  <!-- Class-year filter buttons.
+       These are generated from the `classes` array below, so you never edit
+       them by hand — add a class year to the data and a button appears. -->
+  <div class="filter-row" id="alumni-filter-row">
+    <button class="filter-btn active" onclick="filterTeam('all', this)">All</button>
+  </div>
+
+  <!-- ─────────────────────────────────────────────
+     ALUMNI ROSTER (DATA + RENDER SCRIPT)
+───────────────────────────────────────────── -->
+
+<div id="alumni-container"></div>
+
+<script>
+/* ────────────────────────────────────────────────────────────────────────
+   HOW TO ADD AN ALUMNUS
+
+   Find the class-year object below (or add a new one at the TOP of the list
+   so the newest class shows first) and add an entry to its `members` array:
+
+     { name: "Jane Doe",
+       img:  "/static/DEBUT_HEADSHOTS/Jane_Doe.JPG",  // optional
+       note: "Phase 2A"                               // optional, small grey line
+     }
+
+   - `img`  — leave it out and the card falls back to a lettered placeholder.
+   - `note` — anything short: former subteam, current role, grad school, etc.
+   - `lead: true` — adds the red "Lead" tag, same as on the Members page.
+
+   Adding a new class year: copy one of the objects below, change `id`
+   (e.g. "2022") and `title` (e.g. "Class of 2022"). The filter button is
+   created automatically.
+   ──────────────────────────────────────────────────────────────────────── */
+const classes = [
+  {
+    id: "2026",
+    label: "Graduating Class",
+    title: "Class of 2026",
+    members: [
+      // { name: "Jane Doe", img: "/static/DEBUT_HEADSHOTS/Jane_Doe.JPG", note: "Phase 2A" },
+    ]
+  },
+  {
+    id: "2025",
+    label: "Graduating Class",
+    title: "Class of 2025",
+    members: [
+    ]
+  },
+  {
+    id: "2024",
+    label: "Graduating Class",
+    title: "Class of 2024",
+    members: [
+    ]
+  },
+  {
+    id: "2023",
+    label: "Graduating Class",
+    title: "Class of 2023",
+    members: [
+    ]
+  }
+];
+
+// ─────────────────────────────
+// RENDER FUNCTION
+// Mirrors the Members page renderer: same .subteam-section / .members-grid
+// markup, so the shared filterTeam() in main.js and the shared CSS both work.
+// ─────────────────────────────
+const alumniContainer = document.getElementById("alumni-container");
+const alumniFilterRow = document.getElementById("alumni-filter-row");
+
+classes.forEach(cls => {
+  // Filter button for this class year
+  const btn = document.createElement("button");
+  btn.className = "filter-btn";
+  btn.textContent = cls.title;
+  btn.addEventListener("click", () => filterTeam(cls.id, btn));
+  alumniFilterRow.appendChild(btn);
+
+  // Section for this class year
+  const section = document.createElement("div");
+  section.className = "subteam-section";
+  section.dataset.team = cls.id;
+
+  const roster = cls.members.length
+    ? `<div class="members-grid">
+        ${cls.members.map(m => `
+          <div class="member-card">
+            ${m.img
+              ? `<img loading="lazy" decoding="async" src="${m.img}" alt="${m.name}">`
+              : `<div class="member-no-photo">${m.name.charAt(0)}</div>`}
+            <div class="member-name">
+              ${m.name}${m.lead ? ` <span class="member-lead-tag">Lead</span>` : ""}
+            </div>
+            ${m.note ? `<div class="member-note">${m.note}</div>` : ""}
+          </div>
+        `).join("")}
+      </div>`
+    : `<p class="alumni-empty">Alumni from this class are still being added.</p>`;
+
+  section.innerHTML = `
+    <div class="subteam-header">
+      <span class="subteam-section-label">${cls.label}</span>
+      <span class="subteam-section-title">${cls.title}</span>
+    </div>
+    ${roster}
+  `;
+
+  alumniContainer.appendChild(section);
+});
+</script>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     FOOTER — identical on all 7 pages. Copy to every file if changed.
+     ══════════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">Cornell DEBUT — Biomedical Engineering Project Team</div>
+  <div class="footer-links">
+    <a href="mailto:debut@cornell.edu" class="footer-link">debut@cornell.edu</a>
+    <a href="/apply/" class="footer-link">Apply</a>
+    <a href="https://instagram.com/cornelldebut" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 Cornell DEBUT.</div>
+  <div class="footer-statements">
+    <a href="https://www.hr.cornell.edu/about/workplace-rights/equal-education-and-employment" target="_blank" rel="noopener" class="footer-statement-link">Equal Education and Employment</a>
+    <span class="footer-statement">This organization is a registered student organization of Cornell University.</span>
+  </div>
+</footer>
+
+<script src="/main.js"></script>
+
+</body>
+</html>
