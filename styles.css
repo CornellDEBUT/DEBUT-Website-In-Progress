@@ -1236,12 +1236,15 @@ footer {
   border-left: 2px solid var(--red);
   padding:     20px;
   display:     flex;
-  align-items: center;
+  align-items: flex-start;
   overflow-y:  auto;
 }
 
 .member-face-back p {
-  margin:      0;
+  /* Auto margins centre a short bio, but collapse to 0 once the bio is taller
+     than the card — so a long one starts at the top and scrolls, instead of
+     being centred with its first lines cut off above the edge, out of reach. */
+  margin:      auto 0;
   font-size:   13px;
   line-height: 1.65;
   color:       var(--text-mid);

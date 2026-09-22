@@ -89,8 +89,10 @@ const teams = [
     title: "Team Leads",
     members: [
       { name: "Sally Scofield", img: "/static/DEBUT_HEADSHOTS/Sally_Scofield.JPG", lead: true },
-      { name: "Carol Lyu", img: "/static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true },
-      { name: "Holbrook Langley", img: "/static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG", tag: "Elect" },
+      { name: "Carol Lyu", img: "/static/DEBUT_HEADSHOTS/Carol_Lyu.JPG", lead: true,
+        bio: "Hi! My name is Carol and I am from Toronto, Canada. DEBUT feels like a big family to me and I have met so many passionated people on the team which I still maintain contact with even after some have graduated. It's also a place where I can use the skills I learned in BME to work on translational and collaborative projects. In my free time, I love skiing, playing sports, spending time with friends, and watching movies. Fun Fact: I have a pet dwarf bunny at home. Reach me at kl822@cornell.edu" },
+      { name: "Holbrook Langley", img: "/static/DEBUT_HEADSHOTS/Holbrook_Langley.JPG", tag: "Elect",
+        bio: "Hi my name is Holbrook and I’m from Westchester NY. I’m studying biological engineering. Being on DEBUT has given me so many opportunities to learn and grow with some of the best people I’ve met at Cornell. Outside of the team, I love to run, get outside, and hike! Reach me at hdl46@cornell.edu" },
       { name: "Nathan Briard", img: "/static/DEBUT_HEADSHOTS/Nathan_Briard.JPG", tag: "Elect",
         bio: "Hi! Nathan's the name, BME is the game." }
     ]
@@ -101,12 +103,15 @@ const teams = [
     title: "Phase 1A",
     members: [
       { name: "Andrew Leibowitz", img: "/static/DEBUT_HEADSHOTS/Andrew_Liebowitz.JPG", lead: true },
-      { name: "Asher Ciardiello", img: "/static/DEBUT_HEADSHOTS/Asher_Ciardiello.JPG" },
+      { name: "Asher Ciardiello", img: "/static/DEBUT_HEADSHOTS/Asher_Ciardiello.JPG",
+        bio: "I’m from Connecticut and am currently studying Mechanical Engineering at Cornell. Being a part of DEBUT has given me the opportunity to explore my interest in the medical device field and gain hands-on experience developing solutions that can improve people’s lives. Outside of engineering, I enjoy playing rugby, cooking, drawing, and traveling. Reach me at agc97@cornell.edu" },
       { name: "Felix Grimm", img: "/static/DEBUT_HEADSHOTS/Felix_Grimm.JPG" },
       { name: "Gloria Zhang", img: "/static/DEBUT_HEADSHOTS/Gloria_Zhang.JPG" },
-      { name: "Nana Jiraphanphong", img: "/static/DEBUT_HEADSHOTS/Nana_Jiraphanphong .JPG" },
+      { name: "Nana Jiraphanphong", img: "/static/DEBUT_HEADSHOTS/Nana_Jiraphanphong .JPG",
+        bio: "I’m from Thailand and am studying Biomedical Engineering at Cornell. Joining DEBUT since my freshman year has helped me grow as both a team player and a bio-innovator while working alongside peers who share my passion for BME. Outside of academics, I enjoy playing racket sports, cooking, and spending time with friends. A fun fact about me is that I have four dogs back home in Thailand! Reach me at pj285@cornell.edu" },
       { name: "Nathan Choi", img: "/static/DEBUT_HEADSHOTS/NATHAN_CHOI.jpg" },
-      { name: "Zayaan Hussain", img: "/static/DEBUT_HEADSHOTS/Zayaan_Hussain.JPG" }
+      { name: "Zayaan Hussain", img: "/static/DEBUT_HEADSHOTS/Zayaan_Hussain.JPG",
+        bio: "Zayaan is a junior from Westchester, NY, majoring in biomedical engineering. In addition to Cornell DEBUT, he is involved with the Cornell Financial Analysts and is an engineering ambassador. This past summer, Zayaan interned at a special situations investment fund. Zayaan is passionate about biomechanics and enjoys watching college sports, trying new restaurants, and listening to music. Reach me at zsh7@cornell.edu" }
     ]
   },
   {
@@ -118,7 +123,12 @@ const teams = [
       { name: "Nitish Bhamidipati", img: "/static/DEBUT_HEADSHOTS/Nitish_Bhamidipati.JPG" },
       { name: "Connie Anagnos", img: "/static/DEBUT_HEADSHOTS/Connie_Anagnos.JPG" },
       { name: "Syon Khatter", img: "/static/DEBUT_HEADSHOTS/Syon_Khatter.JPG" },
-      { name: "Rawsen Weideman", img: "/static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG" }
+      { name: "Rawsen Weideman", img: "/static/DEBUT_HEADSHOTS/Rawsen_Weideman.JPG",
+        bio: "From: Denver, CO. DEBUT: Being on DEBUT has been a great engineering experience, allowing me to from valuable connections that will last a lifetime and develop fundamental R&D skills fundamental to my continued interest in the intersection of biomedical hardware with my ECE major. Hobbies: Soccer, skiing, basketball. Fun Fact: I’ve skied down Libe Slope. Reach me at rlw332@cornell.edu" },
+      { name: "Will Wood",
+        bio: "Hi! I’m a Junior mechanical engineer minoring in materials science. I’m from Boston and have a huge interest in 3D printed prosthetics. Also I’m a black belt in karate! Reach me at wjw96@cornell.edu" },
+      { name: "Benjamin Hur",
+        bio: "I'm a junior mechanical engineer from Queens, NYC. I'm excited to work with people from different majors on engineering problems that won't look like any I've done before. I love cooking and playing the piano. Reach me at hh785@cornell.edu" }
     ]
   },
   {
@@ -126,15 +136,21 @@ const teams = [
     label: "Subteam",
     title: "Phase 2A",
     members: [
-      { name: "Ian Vann", img: "/static/DEBUT_HEADSHOTS/Ian_Vann.JPG", lead: true },
+      { name: "Ian Vann", img: "/static/DEBUT_HEADSHOTS/Ian_Vann.JPG", lead: true,
+        bio: "I am a senior Chemical Engineer and am from Bergen County, NJ. I have been on DEBUT for four years, and it has truly changed the way I think about engineering and my career. DEBUT is an awesome team that I am unbelievably grateful to be a part of. My fun fact is that I am an ultra-runner! Reach me at icv3@cornell.edu" },
       { name: "Elizabeth Paperno", img: "/static/DEBUT_HEADSHOTS/Elizabeth_Paperno.JPG" },
-      { name: "Paige Cobrin", img: "/static/DEBUT_HEADSHOTS/Paige_Cobrin.JPG" },
-      { name: "Anna Chen", img: "/static/DEBUT_HEADSHOTS/ANNA_CHEN.JPG" },
+      { name: "Paige Cobrin", img: "/static/DEBUT_HEADSHOTS/Paige_Cobrin.JPG",
+        bio: "Paige is a senior from Weston, CT studying Mechanical Engineering and minoring in Business. DEBUT has been an incredible opportunity for her to develop her design and building skills. Synthesizing biomedical initiatives with building devices has been an impactful part of her Cornell experience. In her free time, Paige enjoys going for walks outside with friends, and playing board games. Reach me at pac252@cornell.edu" },
+      { name: "Anna Chen", img: "/static/DEBUT_HEADSHOTS/ANNA_CHEN.JPG",
+        bio: "Hi! I'm Anna, a sophomore from Chattanooga, Tennessee studying Operations Research and Information Engineering with a minor in Biomedical Engineering. Being on DEBUT has allowed me to combine my interests in healthcare and engineering while collaborating with a dedicated team to develop a device that addresses a real clinical need. Outside of DEBUT, I enjoy playing soccer and running. Reach me at awc87@cornell.edu" },
       { name: "Justin Cohen", img: "/static/DEBUT_HEADSHOTS/JUSTIN_COHEN.JPG" },
-      { name: "Rahul Ramarao", img: "/static/DEBUT_HEADSHOTS/Rahul_Ramarao.JPG" },
+      { name: "Rahul Ramarao", img: "/static/DEBUT_HEADSHOTS/Rahul_Ramarao.JPG",
+        bio: "I am a computer science major from San Jose, California. I enjoy traveling playing board games and hiking. Fun fact: I've been to 30+ countries. Reach me at rmr287@cornell.edu" },
       { name: "Katherine Doniger", img: "/static/DEBUT_HEADSHOTS/KATHERINE_DONIGER.JPG" },
-      { name: "Russell Tan", img: "/static/DEBUT_HEADSHOTS/Russell_Tan.JPG" },
-      { name: "Olivia Jung", img: "/static/DEBUT_HEADSHOTS/Olivia_Jung.JPG" },
+      { name: "Russell Tan", img: "/static/DEBUT_HEADSHOTS/Russell_Tan.JPG",
+        bio: "Hi! My name is Russell and I’m an engineering student. DEBUT has been a great opportunity for me to collaborate with others in a professional engineering environment. One fun fact about myself is that I played soccer in Europe for 3 years prior to Cornell! Reach me at rt528@cornell.edu" },
+      { name: "Olivia Jung", img: "/static/DEBUT_HEADSHOTS/Olivia_Jung.JPG",
+        bio: "Hey! I'm originally from Seoul, South Korea, but I moved to Austin, Texas in highschool. Being part of DEBUT has honestly given me some of my closest friends in engineering. I'm studying ORIE & Business, and outside of class you'll usually find me trying out new food spots. Reach me at dj432@cornell.edu" },
       { name: "Arya Samaratunga", img: "/static/DEBUT_HEADSHOTS/Arya_Samaratunga.JPG" },
       { name: "Zachary Wei", img: "/static/DEBUT_HEADSHOTS/Zachary_Wei.JPG" }
     ]
@@ -146,13 +162,17 @@ const teams = [
     members: [
       { name: "Molly Matri", img: "/static/DEBUT_HEADSHOTS/Molly_Matri.JPG", lead: true },
       { name: "Jedric Jizaiah Aniciete", img: "/static/DEBUT_HEADSHOTS/Jedric_Jizaiah_Aniciete.JPG" },
-      { name: "Mireille Antaki", img: "/static/DEBUT_HEADSHOTS/MireilleAntaki.JPG" },
-      { name: "Cooper Carrozza", img: "/static/DEBUT_HEADSHOTS/Cooper_Carrozza.JPG" },
-      { name: "Evan Chang", img: "/static/DEBUT_HEADSHOTS/EVAN_CHANG.JPG" },
+      { name: "Mireille Antaki", img: "/static/DEBUT_HEADSHOTS/MireilleAntaki.JPG",
+        bio: "Hey, my name is Mireille and I'm a biological engineering student at CALS on the pre-med track! I love how the Debut community encourages creativity, collaboration, and exploring new ideas through our hands-on design projects. Working with teammates to solve real world problems has been such a valuable experience and has strengthened my interest in the intersection of medicine and engineering. Fun fact: I’m from Ithaca, so I know all the best waterfalls and cute spots around town! Reach me at mpa52@cornell.edu" },
+      { name: "Cooper Carrozza", img: "/static/DEBUT_HEADSHOTS/Cooper_Carrozza.JPG",
+        bio: "Hey, my name is Cooper and I am from Raleigh, North Carolina and I am studying Biomedical Engineering. Being on DEBUT has allowed me to surround myself with people that are also interested in medical devices with a variety of different viewpoints, career goals, and majors. A fun fact about me is that I am graduating in 3 years! Reach me at cjc428@cornell.edu" },
+      { name: "Evan Chang", img: "/static/DEBUT_HEADSHOTS/EVAN_CHANG.JPG",
+        bio: "Wassap! My name is Evan, and I am from Chino Hills, CA (Ball brothers anyone?)! Being on DEBUT has not only given me the space to channel my interest into engineering, but also has given me the opportunity to meet some of the most driven and hilarious people I know at Cornell. I am studying biomedical engineering while also being premed, and hope to someday work in orthopedics helping professional baseball players and other athletes recover from sports injuries. In my free time (not much nowadays), I love to play taiko (Japanese drums), go scuba diving, play the electric guitar, watch baseball (go Dodgers!), and Brawl Stars-ing. Fun fact: I am red-green colorblind!! Reach me at elc242@cornell.edu" },
       { name: "Tristan Gelinas", img: "/static/DEBUT_HEADSHOTS/Tristan_bfsd.JPG",
       bio: "Howdy! Tristan's the name, don't wear it out."},
       { name: "Alix Martini" },
-      { name: "Clara Reive", img: "/static/DEBUT_HEADSHOTS/Clara.Reive.JPG" },
+      { name: "Clara Reive", img: "/static/DEBUT_HEADSHOTS/Clara.Reive.JPG",
+        bio: "Hi! I'm a sophomore studying ECE with a strong interest in biomedical devices, and I'm from Boston, MA. I love being on DEBUT because we get to engineer technologies that improve healthcare and accessibility, while working as a team to build and present our device at competitions. Outside of classes and DEBUT, I also work on CerviCheck, a startup in the Butcher lab, am on the club volleyball team, and am a member of Pi Beta Phi! Reach me at cgr49@cornell.edu" },
       { name: "Rebecca Schwarzberg" }
     ]
   },
@@ -162,13 +182,20 @@ const teams = [
     title: "Business",
     members: [
       { name: "Alexander Yeung", img: "/static/DEBUT_HEADSHOTS/Alexander_Yeung.JPG", lead: true },
-      { name: "Zea Khoja", img: "/static/DEBUT_HEADSHOTS/ZEA_KHOJA.JPG", lead: true },
-      { name: "Christine Lim" },
-      { name: "Michelle Park" },
+      { name: "Zea Khoja", img: "/static/DEBUT_HEADSHOTS/ZEA_KHOJA.JPG", lead: true,
+        bio: "Hi! My name is Zea, and I’m from Sugar Land, Texas. I’m a junior studying Applied Economics and Management with an intended minor in Policy Analysis and Management. DEBUT is one of my favorite communities on campus because of how passionate and hardworking everyone is! Working alongside the rest of the Business subteam has deepened my interest in healthcare while also helping me develop so many new skills. Outside of DEBUT, I love playing pickleball and poker! Reach me at zak32@cornell.edu" },
+      { name: "Christine Lim",
+        bio: "My name is Christine Lim and I am a junior from Honolulu, Hawaii studying Sociology with minors in Law and Society, Inequality Studies (Health Equity Track), and Health Care Policy. Being part of DEBUT has given me the opportunity to gain firsthand experience exploring my interests in business and healthcare, while meaningfully contributing to the biomedical device industry. Outside of DEBUT, I enjoy traveling to new places and watching soccer games. Reach me at chl77@cornell.edu" },
+      { name: "Michelle Park",
+        bio: "Michelle is a junior studying Operations Research and Engineering at Cornell and is originally from the Philippines. Being part of DEBUT has given her the opportunity to learn more about the biotechnology and healthcare space while working alongside peers with similar interests. Outside of DEBUT, Michelle is a member of BreakFree and LOKO, two dance teams on campus. In her free time, she enjoys traveling, trying new restaurants, and spending time with friends and family. Reach me at msp265@cornell.edu" },
       { name: "Lena Thai", img: "/static/DEBUT_HEADSHOTS/Lena_Thai.JPG" },
       { name: "Ethan Huang", img: "/static/DEBUT_HEADSHOTS/Ethan_Huang.JPG" },
       { name: "Vicente Tang",
-        bio: "I was born in Venezuela but grew up in Brooklyn, New York. Being on DEBUT has allowed me to get a deeper insight into how teams of talented individuals work together to win competitions every year. I am currently studying Biomedical Engineering. Outside of school and work, I love playing basketball and eating food. Fun fact, all of my fingers and toes are double jointed. Reach me at vx27@cornell.edu" }
+        bio: "I was born in Venezuela but grew up in Brooklyn, New York. Being on DEBUT has allowed me to get a deeper insight into how teams of talented individuals work together to win competitions every year. I am currently studying Biomedical Engineering. Outside of school and work, I love playing basketball and eating food. Fun fact, all of my fingers and toes are double jointed. Reach me at vx27@cornell.edu" },
+      { name: "Enrico Hernandez",
+        bio: "Hi! I am Enrico Hernandez, a junior majoring in Global and Public Health Sciences, and I am from Chino, California. Being on DEBUT to me means supporting the development of innovative biomedical devices to improve quality of life and health outcomes. In my free time, I enjoy reading, sleeping, watching TV Shows (Hacks, VEEP, and Adults are my current favorites), and dilly dallying with my friends. A fun fact about me is that I painted myself green three times (I was shrek 2x and the baby zombie from minecraft). Reach me at ebh93@cornell.edu" },
+      { name: "Kaylee Kim",
+        bio: "Hi, Im a junior studying hotel administration. I from Utah, and I like to golf! Reach me at kyk33@cornell.edu" }
     ]
   },
   {
