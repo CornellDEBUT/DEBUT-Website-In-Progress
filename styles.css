@@ -916,6 +916,10 @@ footer {
 
 .role-photo-box img {
   width: 100%;
+  /* The height attribute on the tag would otherwise win here and stretch the
+     photo to its full pixel height; auto hands the sizing back to aspect-ratio
+     so all three cards stay the same shape whatever the source photo is. */
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 3px;
